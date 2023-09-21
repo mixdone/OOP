@@ -26,15 +26,15 @@ public class HeapSort {
 
     private static void makeheap(int[] array, int len, int i) {
         int max = i;
-        int left_son = 2 * i + 1;
-        int right_son = 2 * i + 2;
+        int leftSon = 2 * i + 1;
+        int rightSon = 2 * i + 2;
 
-        if (left_son < len && array[left_son] > array[max]) {
-            max = left_son;
+        if (leftSon < len && array[leftSon] > array[max]) {
+            max = leftSon;
         }
 
-        if (right_son < len && array[right_son] > array[max]) {
-            max = right_son;
+        if (rightSon < len && array[rightSon] > array[max]) {
+            max = rightSon;
         }
 
         if (max != i) {
