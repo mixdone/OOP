@@ -1,10 +1,11 @@
 
 public class HeapSort {
-
     /**
-     * The method sorts an array using heap
-     * @param array randomly filled
-     * @return sorted array
+     * The method sorts an array using heap.
+     *
+     * @param array randomly filled.
+     * @return sorted array.
+     *
      */
     public static int[] heapsort(int[] array) {
 
