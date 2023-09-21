@@ -1,6 +1,4 @@
-/**
- * @autor Michael Diza
- */
+
 public class HeapSort {
 
     /**
