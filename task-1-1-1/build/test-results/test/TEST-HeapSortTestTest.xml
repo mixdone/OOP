@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="HeapSortTestTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-09-21T07:52:55" hostname="mixdOne" time="0.068">
+  <properties/>
+  <testcase name="[1] [5, 4, 3, 2, 1], [1, 2, 3, 4, 5]" classname="HeapSortTestTest" time="0.05"/>
+  <testcase name="[2] [-1, 2, 1000000, 1, 1, 2, 3], [-1, 1, 1, 2, 2, 3, 1000000]" classname="HeapSortTestTest" time="0.001"/>
+  <testcase name="[3] [-2, -1, 0, 1, 2, 3, 4], [-2, -1, 0, 1, 2, 3, 4]" classname="HeapSortTestTest" time="0.001"/>
+  <testcase name="[4] [], []" classname="HeapSortTestTest" time="0.002"/>
+  <testcase name="[5] [1], [1]" classname="HeapSortTestTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
