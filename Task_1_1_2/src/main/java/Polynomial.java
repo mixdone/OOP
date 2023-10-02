@@ -105,6 +105,11 @@ public class Polynomial {
 
         return new Polynomial(newCoef);
     }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
     public boolean equals(Polynomial p) {
         return this.toString().equals(p.toString());
     }
