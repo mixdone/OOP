@@ -14,7 +14,7 @@ public class Polynomial {
     }
 
     /**
-     * Вычисляет сумму
+     * Вычисляет сумму.
      *
      * @param p Polynomial
      * @return sum
@@ -33,7 +33,7 @@ public class Polynomial {
     }
 
     /**
-     * Вычисляет разность
+     * Вычисляет разность.
      *
      * @param p Polynomial
      * @return differential
@@ -52,7 +52,7 @@ public class Polynomial {
     }
 
     /**
-     * Вычисляет произведение полиномов
+     * Вычисляет произведение полиномов.
      *
      * @param p Polynomial
      * @return production
@@ -71,7 +71,7 @@ public class Polynomial {
     }
 
     /**
-     * Вычисляет значение полинома в точке
+     * Вычисляет значение полинома в точке.
      *
      * @param point Integer
      * @return value
@@ -85,7 +85,7 @@ public class Polynomial {
     }
 
     /**
-     * Вычесляет n производную
+     * Вычесляет n производную.
      *
      * @param n
      * @return PolYnomial
