@@ -19,16 +19,16 @@ public class Polynomial {
      * @return sum
      */
     public Polynomial plus(Polynomial p) {
-        int new_degree = Math.max(this.degree, p.degree);
-        int[] new_coef = new int[new_degree];
+        int newDegree = Math.max(this.degree, p.degree);
+        int[] newCoef = new int[newDegree];
 
         if (this.degree >= 0) {
-            System.arraycopy(this.coef, 0, new_coef, 0, this.degree);
+            System.arraycopy(this.coef, 0, newCoef, 0, this.degree);
         }
         for (int i = 0; i < p.degree; ++i) {
-            new_coef[i] += p.coef[i];
+            newCoef[i] += p.coef[i];
         }
-        return new Polynomial(new_coef);
+        return new Polynomial(newCoef);
     }
 
     /**
@@ -37,16 +37,16 @@ public class Polynomial {
      * @return differential
      */
     public Polynomial minus(Polynomial p) {
-        int new_degree = Math.max(this.degree, p.degree);
-        int[] new_coef = new int[new_degree];
+        int newDegree = Math.max(this.degree, p.degree);
+        int[] newCoef = new int[newDegree];
 
         if (this.degree >= 0) {
-            System.arraycopy(this.coef, 0, new_coef, 0, this.degree);
+            System.arraycopy(this.coef, 0, newCoef, 0, this.degree);
         }
         for (int i = 0; i < p.degree; ++i) {
-            new_coef[i] -= p.coef[i];
+            newCoef[i] -= p.coef[i];
         }
-        return new Polynomial(new_coef);
+        return new Polynomial(newCoef);
     }
 
     /**
@@ -55,16 +55,16 @@ public class Polynomial {
      * @return production
      */
     public Polynomial multiply(Polynomial p) {
-        int new_degree = this.degree * p.degree;
-        int[] new_coef = new int[new_degree];
+        int newDegree = this.degree * p.degree;
+        int[] newCoef = new int[newDegree];
 
         for (int i = 0; i < this.degree; ++i) {
             for (int j = 0; j < p.degree; ++j) {
-                new_coef[i + j] += this.coef[i] * p.coef[j];
+                newCoef[i + j] += this.coef[i] * p.coef[j];
             }
         }
 
-        return new Polynomial(new_coef);
+        return new Polynomial(newCoef);
     }
 
     /**
@@ -86,19 +86,19 @@ public class Polynomial {
      * @return PolYnomial
      */
     public Polynomial differentiate(int n) {
-        int[] new_coef = new int[this.degree];
-        int new_degree = this.degree;
-        System.arraycopy(this.coef, 0, new_coef, 0, this.degree);
+        int[] newCoef = new int[this.degree];
+        int newDegree = this.degree;
+        System.arraycopy(this.coef, 0, newCoef, 0, this.degree);
 
         for (int i = 0; i < n; ++i) {
             for (int j = 1; j < this.degree; ++j) {
-                new_coef[j - 1] = new_coef[j] * j;
+                newCoef[j - 1] = newCoef[j] * j;
             }
-            new_coef[--new_degree] = 0;
+            newCoef[--newDegree] = 0;
 
         }
 
-        return new Polynomial(new_coef);
+        return new Polynomial(newCoef);
     }
     public boolean equals(Polynomial p) {
         return this.toString().equals(p.toString());
