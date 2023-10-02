@@ -22,10 +22,12 @@ public class Polynomial {
         int new_degree = Math.max(this.degree, p.degree);
         int[] new_coef = new int[new_degree];
 
-        if (this.degree >= 0)
+        if (this.degree >= 0) {
             System.arraycopy(this.coef, 0, new_coef, 0, this.degree);
-        for (int i = 0; i < p.degree; ++i)
+        }
+        for (int i = 0; i < p.degree; ++i) {
             new_coef[i] += p.coef[i];
+        }
         return new Polynomial(new_coef);
     }
 
@@ -38,10 +40,12 @@ public class Polynomial {
         int new_degree = Math.max(this.degree, p.degree);
         int[] new_coef = new int[new_degree];
 
-        if (this.degree >= 0)
+        if (this.degree >= 0) {
             System.arraycopy(this.coef, 0, new_coef, 0, this.degree);
-        for (int i = 0; i < p.degree; ++i)
+        }
+        for (int i = 0; i < p.degree; ++i) {
             new_coef[i] -= p.coef[i];
+        }
         return new Polynomial(new_coef);
     }
 
@@ -54,9 +58,11 @@ public class Polynomial {
         int new_degree = this.degree * p.degree;
         int[] new_coef = new int[new_degree];
 
-        for (int i = 0; i < this.degree; ++i)
-            for (int j = 0; j < p.degree; ++j)
+        for (int i = 0; i < this.degree; ++i) {
+            for (int j = 0; j < p.degree; ++j) {
                 new_coef[i + j] += this.coef[i] * p.coef[j];
+            }
+        }
 
         return new Polynomial(new_coef);
     }
@@ -68,8 +74,9 @@ public class Polynomial {
      */
     public int evaluate(int point) {
         int answer = 0;
-        for (int i = 0; i < this.degree; ++i) 
+        for (int i = 0; i < this.degree; ++i) {
             answer += this.coef[i] * (int) Math.pow(point, i);
+        }
         return answer;
     }
 
@@ -84,8 +91,9 @@ public class Polynomial {
         System.arraycopy(this.coef, 0, new_coef, 0, this.degree);
 
         for (int i = 0; i < n; ++i) {
-            for (int j = 1; j < this.degree; ++j)
+            for (int j = 1; j < this.degree; ++j) {
                 new_coef[j - 1] = new_coef[j] * j;
+            }
             new_coef[--new_degree] = 0;
 
         }
@@ -100,25 +108,28 @@ public class Polynomial {
     public String toString() {
         StringBuilder answer = new StringBuilder();
         for (int i = this.degree - 1; i >= 0; --i) {
-            if ((answer.isEmpty()) && this.coef[i] < 0)
+            if ((answer.isEmpty()) && this.coef[i] < 0) {
                 answer.append("-");
-            else if (this.coef[i] < 0)
+            } else if (this.coef[i] < 0) {
                 answer.append(" - ");
-            else if (this.coef[i] > 0 && !answer.toString().isEmpty())
+            } else if (this.coef[i] > 0 && !answer.toString().isEmpty()) {
                 answer.append(" + ");
+            }
 
-            if (answer.toString().isEmpty() && i == 0)
+            if (answer.toString().isEmpty() && i == 0) {
                 answer.append(Math.abs(this.coef[i]));
-            else if (this.coef[i] != 0) {
-                if (i == 0)
+            } else if (this.coef[i] != 0) {
+                if (i == 0) {
                     answer.append(Math.abs(this.coef[i]));
-                else if (Math.abs(this.coef[i]) != 1)
+                } else if (Math.abs(this.coef[i]) != 1) {
                     answer.append(Math.abs(this.coef[i]));
+                }
 
-                if (i == 1)
+                if (i == 1) {
                     answer.append("x");
-                else if (i > 1)
+                } else if (i > 1) {
                     answer.append("x^").append(i);
+                }
             }
 
         }
