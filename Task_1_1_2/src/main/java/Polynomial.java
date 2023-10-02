@@ -111,29 +111,29 @@ public class Polynomial {
 
     @Override
     public String toString() {
-        StringBuilder answer = new StringBuilder();
+        String answer = "";
         for (int i = this.degree - 1; i >= 0; --i) {
-            if ((answer.isEmpty()) && this.coef[i] < 0) {
-                answer.append("-");
+            if ((answer == "") && this.coef[i] < 0) {
+                answer += "-";
             } else if (this.coef[i] < 0) {
-                answer.append(" - ");
-            } else if (this.coef[i] > 0 && !answer.toString().isEmpty()) {
-                answer.append(" + ");
+                answer += " - ";
+            } else if (this.coef[i] > 0 && answer != "") {
+                answer += " + ";
             }
 
             if (answer.toString().isEmpty() && i == 0) {
-                answer.append(Math.abs(this.coef[i]));
+                answer += Math.abs(this.coef[i]);
             } else if (this.coef[i] != 0) {
                 if (i == 0) {
-                    answer.append(Math.abs(this.coef[i]));
+                    answer += Math.abs(this.coef[i]);
                 } else if (Math.abs(this.coef[i]) != 1) {
-                    answer.append(Math.abs(this.coef[i]));
+                    answer += Math.abs(this.coef[i]);
                 }
 
                 if (i == 1) {
-                    answer.append("x");
+                    answer += "x";
                 } else if (i > 1) {
-                    answer.append("x^").append(i);
+                    answer += ("x^" + i);
                 }
             }
 
