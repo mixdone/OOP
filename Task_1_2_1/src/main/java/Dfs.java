@@ -22,11 +22,13 @@ public class Dfs<T> implements Iterator<T>{
      */
     @Override
     public T next() throws NoSuchElementException{
-        if (hasNext() != false) {
+        if (hasNext()) {
             Tree<T> current = this.stack.pop();
+
             for(int i = 0; i < current.children.size(); ++i) {
                 this.stack.push(current.children.get(i));
             }
+            
             return current.value;
         }
         throw new NoSuchElementException();

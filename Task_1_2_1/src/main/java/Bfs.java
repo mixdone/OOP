@@ -14,8 +14,7 @@ public class Bfs<T> implements Iterator<T> {
      */
     @Override
     public boolean hasNext() {
-        boolean is_empty = this.queue.isEmpty();
-        return !is_empty;
+        return !this.queue.isEmpty();
     }
 
     /**
@@ -24,7 +23,7 @@ public class Bfs<T> implements Iterator<T> {
      */
     @Override
     public T next() throws NoSuchElementException {
-        if(hasNext()){
+        if(hasNext()) {
             Tree<T> current = this.queue.remove();
             this.queue.addAll(current.children);
             return current.value;

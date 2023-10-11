@@ -69,25 +69,27 @@ public class Tree<T> implements Iterable<T>{
      */
     @Override
     public boolean equals(Object obj) {
-        boolean is_equal = true;
+        boolean isEqual = true;
         if ((obj instanceof Tree)) {
             Tree<T> tree = (Tree<T>) obj;
             Iterator<T> iterator1 = this.iterator();
             Iterator<T> iterator2 = tree.iterator();
+
             while (iterator1.hasNext() && iterator2.hasNext()) {
                 if (iterator1.next() != iterator2.next()) {
-                    is_equal = false;
+                    isEqual = false;
                     break;
                 }
             }
+
             if (iterator1.hasNext() != iterator2.hasNext()) {
-                is_equal = false;
+                isEqual = false;
             }
         }
         else {
-            is_equal = false;
+            isEqual = false;
         }
-        return is_equal;
+        return isEqual;
     }
 
 }
