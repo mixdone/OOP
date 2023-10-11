@@ -1,7 +1,7 @@
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.Stack;
 import java.util.NoSuchElementException;
+import java.util.Stack;
 
 /**
  * Итератор dfs.
