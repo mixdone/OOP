@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Tree<T> implements Iterable<T> {
     T value;
@@ -92,8 +93,7 @@ public class Tree<T> implements Iterable<T> {
             if (iterator1.hasNext() != iterator2.hasNext()) {
                 isEqual = false;
             }
-        }
-        else {
+        } else {
             isEqual = false;
         }
         return isEqual;

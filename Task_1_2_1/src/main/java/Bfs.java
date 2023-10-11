@@ -1,9 +1,14 @@
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+
 
 /**
  * Итератор bfs.
  */
-public class Bfs< T > implements Iterator< T > {
+public class Bfs<T> implements Iterator<T> {
     Queue<Tree<T>> queue;
 
     /**

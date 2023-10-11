@@ -1,9 +1,12 @@
-import java.util.*;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.Stack;
+import java.util.NoSuchElementException;
 
 /**
  * Итератор dfs.
  */
-public class Dfs< T > implements Iterator< T > {
+public class Dfs<T> implements Iterator<T> {
     Stack<Tree<T>> stack;
 
     /**
