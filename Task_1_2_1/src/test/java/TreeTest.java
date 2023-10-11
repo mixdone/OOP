@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-
 /**
  * Автоматические тесты.
  */
@@ -35,11 +34,11 @@ public class TreeTest {
     public void removeIntegerTest() {
         Tree<Integer> tree = new Tree<>(0);
         var a = tree.addChild(1);
-        var b = a.addChild(11);
+        a.addChild(11);
         a.remove();
         Assertions.assertFalse(tree.children.contains(a));
     }
-
+    
     @ParameterizedTest
     @MethodSource("getTestEquals")
     public void equalsTest(boolean expected, Tree<Integer> tree, Object obj) {
@@ -57,6 +56,7 @@ public class TreeTest {
     public void dfsTest(Integer expected, Integer value) {
         Assertions.assertEquals(expected, value);
     }
+
 
     static Stream<Arguments> getDfsTest() {
         Tree<Integer> tree = new Tree<>(0);

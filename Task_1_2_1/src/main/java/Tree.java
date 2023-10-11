@@ -6,6 +6,8 @@ public class Tree<T> implements Iterable<T> {
     Tree<T> parent;
     ArrayList<Tree<T>> children;
 
+    int modCount = 0;
+
     public Tree(T value) {
         this.value = value;
         this.parent = null;

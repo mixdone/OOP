@@ -9,12 +9,17 @@ import java.util.Stack;
 public class Dfs<T> implements Iterator<T> {
     Stack<Tree<T>> stack;
 
+    Tree<T> root;
+    int expectedModCount;
+
     /**
      * Создает стек.
      */
     public Dfs(Tree<T> node) {
+        this.expectedModCount = node.modCount;
         this.stack = new Stack<>();
         this.stack.push(node);
+        this.root = node;
     }
 
     /**
@@ -23,8 +28,12 @@ public class Dfs<T> implements Iterator<T> {
      * @return flag not empty
      */
     @Override
-    public boolean hasNext() {
-        return !this.stack.empty();
+    public boolean hasNext() throws ConcurrentModificationException{
+        if (root.modCount != this.expectedModCount) {
+            throw new ConcurrentModificationException();
+        } else {
+            return !this.stack.empty();
+        }
     }
 
     /**

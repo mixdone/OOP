@@ -10,13 +10,17 @@ import java.util.Queue;
  */
 public class Bfs<T> implements Iterator<T> {
     Queue<Tree<T>> queue;
+    Tree<T> root;
+    int expectedModCount;
 
     /**
      * Создает очередь.
      */
     public Bfs(Tree<T> node) {
+        this.expectedModCount = node.modCount;
         this.queue = new ArrayDeque<>();
         this.queue.add(node);
+        this.root = node;
     }
 
     /**
@@ -25,8 +29,12 @@ public class Bfs<T> implements Iterator<T> {
      * @return flag not empty
      */
     @Override
-    public boolean hasNext() {
-        return !this.queue.isEmpty();
+    public boolean hasNext() throws ConcurrentModificationException{
+        if (root.modCount != this.expectedModCount) {
+            throw new ConcurrentModificationException();
+        } else {
+            return !this.queue.isEmpty();
+        }
     }
 
     /**
