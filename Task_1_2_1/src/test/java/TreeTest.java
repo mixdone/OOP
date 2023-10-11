@@ -1,9 +1,13 @@
+import java.util.ConcurrentModificationException;
 import java.util.stream.Stream;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Автоматические тесты.
@@ -38,7 +42,7 @@ public class TreeTest {
         a.remove();
         Assertions.assertFalse(tree.children.contains(a));
     }
-    
+
     @ParameterizedTest
     @MethodSource("getTestEquals")
     public void equalsTest(boolean expected, Tree<Integer> tree, Object obj) {
@@ -55,6 +59,56 @@ public class TreeTest {
     @MethodSource("getDfsTest")
     public void dfsTest(Integer expected, Integer value) {
         Assertions.assertEquals(expected, value);
+    }
+
+    @Test
+    public void bfsConcurentModificationException() {
+        Tree<Integer> tree = new Tree<>(0);
+        tree.addChild(1);
+
+        assertThrows(ConcurrentModificationException.class, () -> {
+            var i = tree.iteratorbfs();
+            i.remove();
+        });
+    }
+
+    @Test
+    public void dfsConcurentModificationException() {
+        Tree<Integer> tree = new Tree<>(0);
+        tree.addChild(1);
+
+        assertThrows(ConcurrentModificationException.class, () -> {
+            var i = tree.iterator();
+            i.remove();
+        });
+    }
+
+    @Test
+    public void dfsNoSuchElementException() {
+        Tree<Integer> tree = new Tree<>(0);
+        tree.addChild(1);
+        tree.addChild(2);
+
+        assertThrows(NoSuchElementException.class, () -> {
+            var i = tree.iterator();
+            for (int j = 0; j < 10; ++j) {
+                i.next();
+            }
+        });
+    }
+
+    @Test
+    public void bfsNoSuchElementException() {
+        Tree<Integer> tree = new Tree<>(0);
+        tree.addChild(1);
+        tree.addChild(2);
+
+        assertThrows(NoSuchElementException.class, () -> {
+            var i = tree.iteratorbfs();
+            for (int j = 0; j < 10; ++j) {
+                i.next();
+            }
+        });
     }
 
 
