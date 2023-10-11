@@ -10,6 +10,7 @@ public class Tree<T> implements Iterable<T> {
         this.parent = null;
         this.children = new ArrayList<>();
     }
+    
     public Tree(T value, Tree<T> parent) {
         this.value = value;
         this.parent = parent;
