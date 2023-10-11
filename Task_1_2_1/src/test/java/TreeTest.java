@@ -86,6 +86,28 @@ public class TreeTest {
     }
 
     @Test
+    public void bfsIteratorConcurentModificationException() {
+        Tree<Integer> tree = new Tree<>(0);
+        tree.addChild(1);
+
+        assertThrows(ConcurrentModificationException.class, () -> {
+            var i = tree.iterator();
+            i.remove();
+        });
+    }
+
+    @Test
+    public void dfsIteratorConcurentModificationException() {
+        Tree<Integer> tree = new Tree<>(0);
+        tree.addChild(1);
+
+        assertThrows(ConcurrentModificationException.class, () -> {
+            var i = tree.iterator();
+            i.remove();
+        });
+    }
+
+    @Test
     public void dfsNoSuchElementException() {
         Tree<Integer> tree = new Tree<>(0);
         tree.addChild(1);
