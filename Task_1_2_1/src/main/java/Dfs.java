@@ -2,6 +2,10 @@ import java.util.*;
 
 public class Dfs<T> implements Iterator<T>{
     Stack<Tree<T>> stack;
+
+    /**
+     * Создает стек.
+     */
     public Dfs(Tree<T> node) {
         this.stack = new Stack<>();
         this.stack.push(node);
@@ -23,7 +27,8 @@ public class Dfs<T> implements Iterator<T>{
      * @return  next value or thow exception
      */
     @Override
-    public T next() throws NoSuchElementException{
+    public T next() throws NoSuchElementException {
+
         if (hasNext()) {
             Tree<T> current = this.stack.pop();
 

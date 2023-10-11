@@ -1,5 +1,6 @@
 import java.util.*;
-public class Tree<T> implements Iterable<T>{
+
+public class Tree<T> implements Iterable<T> {
     T value;
     Tree<T> parent;
     ArrayList<Tree<T>> children;
