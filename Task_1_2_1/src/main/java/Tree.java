@@ -27,6 +27,7 @@ public class Tree<T> implements Iterable<T> {
      * @return new node
      */
     public Tree<T> addChild(T value) {
+        this.modCount++;
         Tree<T> node = new Tree<>(value, this);
         this.children.add(node);
         return node;
@@ -39,6 +40,7 @@ public class Tree<T> implements Iterable<T> {
      * @return subtree
      */
     public Tree<T> addChild(Tree<T> subtree) {
+        this.modCount++;
         this.children.add(subtree);
         return subtree;
     }
@@ -47,6 +49,7 @@ public class Tree<T> implements Iterable<T> {
      * Удаление элемента.
      */
     public void remove() {
+        this.modCount++;
         if (this.parent != null) {
             this.parent.children.remove(this);
         }

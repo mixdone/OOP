@@ -67,8 +67,9 @@ public class TreeTest {
         tree.addChild(1);
 
         assertThrows(ConcurrentModificationException.class, () -> {
-            var i = tree.iteratorbfs();
-            i.remove();
+            var i = tree.iterator();
+            tree.addChild(4);
+            i.next();
         });
     }
 
@@ -79,7 +80,8 @@ public class TreeTest {
 
         assertThrows(ConcurrentModificationException.class, () -> {
             var i = tree.iterator();
-            i.remove();
+            tree.addChild(4);
+            i.next();
         });
     }
 
