@@ -7,7 +7,9 @@ public class Bfs<T> implements Iterator<T> {
         this.queue = new ArrayDeque<>();
         this.queue.add(node);
     }
+
     /**
+     * Проверяет наличие следующего элемента.
      * @return flag not empty
      */
     @Override
@@ -17,6 +19,7 @@ public class Bfs<T> implements Iterator<T> {
     }
 
     /**
+     * Возвращает следующий элемент.
      * @return next value or thow exception
      */
     @Override
@@ -29,6 +32,9 @@ public class Bfs<T> implements Iterator<T> {
         throw new NoSuchElementException();
     }
 
+    /**
+     *  Обработка ошибки.
+     */
     @Override
     public void remove() throws ConcurrentModificationException {
         throw new ConcurrentModificationException();

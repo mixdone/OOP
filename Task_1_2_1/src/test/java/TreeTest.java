@@ -150,5 +150,4 @@ public class TreeTest {
                 Arguments.of("C", tree.children.get(1).children.get(0).value),
                 Arguments.of("D", tree.children.get(1).children.get(1).value));
     }
-
 }

@@ -6,7 +6,9 @@ public class Dfs<T> implements Iterator<T>{
         this.stack = new Stack<>();
         this.stack.push(node);
     }
+
     /**
+     * Проверяет наличие следующего элемента.
      * @return flag not empty
      */
     @Override
@@ -15,6 +17,7 @@ public class Dfs<T> implements Iterator<T>{
     }
 
     /**
+     * Возвращает следующий элемент.
      * @return  next value or thow exception
      */
     @Override
@@ -30,7 +33,7 @@ public class Dfs<T> implements Iterator<T>{
     }
 
     /**
-     *
+     *  Обработка ошибки.
      */
     @Override
     public void remove() throws ConcurrentModificationException {

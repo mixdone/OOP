@@ -15,33 +15,58 @@ public class Tree<T> implements Iterable<T>{
         this.children = new ArrayList<>();
     }
 
+    /**
+     * Добавление элемента.
+     * @param value
+     * @return new node
+     */
     public Tree<T> addChild(T value) {
         Tree<T> node = new Tree<>(value, this);
         this.children.add(node);
         return node;
     }
 
+    /**
+     * Присоединяет поддерево.
+     * @param subtree
+     * @return subtree
+     */
     public Tree<T> addChild(Tree<T> subtree) {
         this.children.add(subtree);
         return subtree;
     }
 
+    /**
+     * Удаление элемента.
+     */
     public void remove() {
         if (this.parent != null) {
             this.parent.children.remove(this);
         }
     }
 
-
+    /**
+     * Реализация итератора.
+     * @return dfs
+     */
     @Override
     public Iterator<T> iterator() {
         return new Dfs<>(this);
     }
 
+    /**
+     * Реализация итератора.
+     * @return bfs
+     */
     public  Iterator<T> iteratorbfs() {
         return new Bfs<>(this);
     }
 
+    /**
+     * Сравнивает два дерева.
+     * @param obj - объект сравнения
+     * @return is_equal
+     */
     @Override
     public boolean equals(Object obj) {
         boolean is_equal = true;
