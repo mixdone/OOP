@@ -9,6 +9,7 @@ public class Dfs<T> implements Iterator<T>{
 
     /**
      * Проверяет наличие следующего элемента.
+     *
      * @return flag not empty
      */
     @Override
@@ -18,6 +19,7 @@ public class Dfs<T> implements Iterator<T>{
 
     /**
      * Возвращает следующий элемент.
+     *
      * @return  next value or thow exception
      */
     @Override
@@ -28,7 +30,7 @@ public class Dfs<T> implements Iterator<T>{
             for(int i = 0; i < current.children.size(); ++i) {
                 this.stack.push(current.children.get(i));
             }
-            
+
             return current.value;
         }
         throw new NoSuchElementException();

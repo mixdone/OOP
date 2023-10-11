@@ -17,6 +17,7 @@ public class Tree<T> implements Iterable<T>{
 
     /**
      * Добавление элемента.
+     *
      * @param value
      * @return new node
      */
@@ -28,6 +29,7 @@ public class Tree<T> implements Iterable<T>{
 
     /**
      * Присоединяет поддерево.
+     *
      * @param subtree
      * @return subtree
      */
@@ -47,6 +49,7 @@ public class Tree<T> implements Iterable<T>{
 
     /**
      * Реализация итератора.
+     *
      * @return dfs
      */
     @Override
@@ -56,6 +59,7 @@ public class Tree<T> implements Iterable<T>{
 
     /**
      * Реализация итератора.
+     *
      * @return bfs
      */
     public  Iterator<T> iteratorbfs() {
@@ -64,6 +68,7 @@ public class Tree<T> implements Iterable<T>{
 
     /**
      * Сравнивает два дерева.
+     *
      * @param obj - объект сравнения
      * @return is_equal
      */

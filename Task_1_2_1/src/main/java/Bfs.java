@@ -10,6 +10,7 @@ public class Bfs<T> implements Iterator<T> {
 
     /**
      * Проверяет наличие следующего элемента.
+     *
      * @return flag not empty
      */
     @Override
@@ -19,6 +20,7 @@ public class Bfs<T> implements Iterator<T> {
 
     /**
      * Возвращает следующий элемент.
+     *
      * @return next value or thow exception
      */
     @Override
