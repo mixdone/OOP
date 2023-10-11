@@ -1,6 +1,9 @@
 import java.util.*;
 
-public class Bfs<T> implements Iterator<T> {
+/**
+ * Итератор bfs.
+ */
+public class Bfs< T > implements Iterator< T > {
     Queue<Tree<T>> queue;
 
     /**
@@ -29,7 +32,7 @@ public class Bfs<T> implements Iterator<T> {
     @Override
     public T next() throws NoSuchElementException {
 
-        if(hasNext()) {
+        if (hasNext()) {
             Tree<T> current = this.queue.remove();
             this.queue.addAll(current.children);
             return current.value;

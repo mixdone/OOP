@@ -1,6 +1,9 @@
 import java.util.*;
 
-public class Dfs<T> implements Iterator<T>{
+/**
+ * Итератор dfs.
+ */
+public class Dfs< T > implements Iterator< T > {
     Stack<Tree<T>> stack;
 
     /**
@@ -32,7 +35,7 @@ public class Dfs<T> implements Iterator<T>{
         if (hasNext()) {
             Tree<T> current = this.stack.pop();
 
-            for(int i = 0; i < current.children.size(); ++i) {
+            for (int i = 0; i < current.children.size(); ++i) {
                 this.stack.push(current.children.get(i));
             }
 

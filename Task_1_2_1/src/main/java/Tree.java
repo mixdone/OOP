@@ -10,7 +10,7 @@ public class Tree<T> implements Iterable<T> {
         this.parent = null;
         this.children = new ArrayList<>();
     }
-    
+
     public Tree(T value, Tree<T> parent) {
         this.value = value;
         this.parent = parent;
@@ -20,7 +20,7 @@ public class Tree<T> implements Iterable<T> {
     /**
      * Добавление элемента.
      *
-     * @param value
+     * @param value - значение новой ноды
      * @return new node
      */
     public Tree<T> addChild(T value) {
@@ -32,7 +32,7 @@ public class Tree<T> implements Iterable<T> {
     /**
      * Присоединяет поддерево.
      *
-     * @param subtree
+     * @param subtree - добавляемое поддерево
      * @return subtree
      */
     public Tree<T> addChild(Tree<T> subtree) {
