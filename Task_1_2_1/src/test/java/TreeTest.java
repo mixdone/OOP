@@ -91,7 +91,7 @@ public class TreeTest {
         tree.addChild(1);
 
         assertThrows(ConcurrentModificationException.class, () -> {
-            var i = tree.iterator();
+            var i = tree.iteratorbfs();
             i.remove();
         });
     }
