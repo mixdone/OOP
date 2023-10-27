@@ -1,9 +1,8 @@
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
 
 public class EdgeTest {
 
@@ -16,7 +15,8 @@ public class EdgeTest {
     @ParameterizedTest
     @MethodSource("getTestGetVertices")
     void valueOperationsTest(Vertex<String> v1, Vertex<String> v2, Edge<String> edge) {
-        Assertions.assertTrue(edge.getVertices().contains(v1.getCurrentVertexNumber()) && edge.getVertices().contains(v2.getCurrentVertexNumber()));
+        Assertions.assertTrue(edge.getVertices().contains(v1.getCurrentVertexNumber()) 
+                && edge.getVertices().contains(v2.getCurrentVertexNumber()));
     }
 
     static Stream<Arguments> getTestWeight() {
