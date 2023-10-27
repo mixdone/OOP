@@ -1,13 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 
+
+/**
+ * Тесты для списка инцедентности.
+ */
 public class IncidenceListTest {
 
     @ParameterizedTest
@@ -82,7 +86,7 @@ public class IncidenceListTest {
         Vertex<String> v1 = new Vertex<>("hello");
         Vertex<String> v2 = new Vertex<>("world");
         Vertex<String> v3 = new Vertex<>("12345");
-        Vertex<String> v4 = new Vertex<>("12345");
+        final Vertex<String> v4 = new Vertex<>("12345");
 
         IncidenceList<String> graph = new IncidenceList<>();
 
@@ -93,7 +97,7 @@ public class IncidenceListTest {
         graph.removeVertex(v2);
         graph.removeVertexByNumber(v3.getCurrentVertexNumber());
 
-        return Stream.of(
+        return Stream.of (
                 Arguments.of( true, v1, graph),
                 Arguments.of(false, v2, graph),
                 Arguments.of(false, v3, graph),

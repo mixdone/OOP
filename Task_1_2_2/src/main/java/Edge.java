@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Реборо класс.
+ */
 public class Edge<T> {
     private final int firstVertexNumber;
     private final int secondVertexNumber;
@@ -10,6 +13,7 @@ public class Edge<T> {
 
     /**
      * Конструктор.
+     *
      * @param v1        - Вершина 1.
      * @param v2        - Вершина 2.
      * @param weight    - Вес ребра.
@@ -24,6 +28,7 @@ public class Edge<T> {
 
     /**
      * Изменяет вес ребра.
+     *
      * @param newWeight - новый вес.
      */
     public void changeEdgeWeight(int newWeight) {
@@ -32,6 +37,7 @@ public class Edge<T> {
 
     /**
      * Возвращает ребро, как список вершин.
+     *
      * @return edge - [Vertex1, Vertex2]
      */
     public List<Integer> getVertices() {
