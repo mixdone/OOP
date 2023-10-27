@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
+/**
+ * Матрица смежности.
+ *
+ * @param <T> - параметр вершины.
+ */
 public class AdjacencyMatrix<T> implements Graph<T> {
 
     private final HashMap<Integer, Vertex<T>> vertices;

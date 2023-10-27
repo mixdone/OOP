@@ -3,6 +3,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * Список инцедентности.
+ *
+ * @param <T> - параметр вершины.
+ */
 public class IncidenceList<T> implements Graph<T> {
     private final HashMap<Integer, Vertex<T>> vertices;
     private final HashMap<Integer, Edge<T>> edges;

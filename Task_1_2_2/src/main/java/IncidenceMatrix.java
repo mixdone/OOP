@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
+/**
+ * Матрица инцедентности.
+ *
+ * @param <T> - Параметр для вершины.
+ */
 public class IncidenceMatrix<T> implements Graph<T> {
 
     private final HashMap<Integer, Vertex<T>> vertices;
