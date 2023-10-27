@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"AdjacencyMatrix"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"Edge"},{"p":"<Unnamed>","l":"Graph"},{"p":"<Unnamed>","l":"IncidenceList"},{"p":"<Unnamed>","l":"IncidenceMatrix"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"Vertex"}]
