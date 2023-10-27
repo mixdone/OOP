@@ -1,7 +1,5 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class AdjacencyMatrix<T> implements Graph<T> {
@@ -11,6 +9,9 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     private int[][] matrix;
     private int matrixSize;
 
+    /**
+     * Конструктор.
+     */
     public AdjacencyMatrix() {
         vertices    = new HashMap<>();
         edges       = new HashMap<>();
@@ -42,8 +43,9 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     public void addVertex(Vertex<T> vertex) {
         vertices.put(vertex.getCurrentVertexNumber(), vertex);
 
-        while (vertex.getCurrentVertexNumber() >= matrixSize)
+        while (vertex.getCurrentVertexNumber() >= matrixSize) {
             this.extendMatrix();
+        }
     }
 
     /**
@@ -126,11 +128,11 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      * @throws NoSuchElementException   - Если такой вершины нет.
      */
     @Override
-    public Vertex<T> getVertexByNumber(int vertexNumber) throws NoSuchElementException{
-        if(!vertices.containsKey(vertexNumber)) {
+    public Vertex<T> getVertexByNumber(int vertexNumber) throws NoSuchElementException {
+
+        if (!vertices.containsKey(vertexNumber)) {
             throw new NoSuchElementException();
-        }
-        else {
+        } else {
             return vertices.get(vertexNumber);
         }
     }
@@ -144,8 +146,12 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      */
     @Override
     public Edge<T> addEdge(Vertex<T> v1, Vertex<T> v2, int weight) {
-        if (!vertices.containsKey(v1.getCurrentVertexNumber())) this.addVertex(v1);
-        if (!vertices.containsKey(v2.getCurrentVertexNumber())) this.addVertex(v2);
+        if (!vertices.containsKey(v1.getCurrentVertexNumber())) {
+            this.addVertex(v1);
+        }
+        if (!vertices.containsKey(v2.getCurrentVertexNumber())) {
+            this.addVertex(v2);
+        }
 
         matrix[v1.getCurrentVertexNumber()][v2.getCurrentVertexNumber()] = weight;
         matrix[v2.getCurrentVertexNumber()][v1.getCurrentVertexNumber()] = weight;
@@ -249,12 +255,12 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             for (int i = 0; i < matrixSize; ++i) {
                 if (matrix[current.getCurrentVertexNumber()][i] != 0) {
                     Vertex<T> v = this.getVertexByNumber(i);
-                    int newDistance = current.getDistance() + matrix[current.getCurrentVertexNumber()][i];
+                    int newDistance = current.getDistance()
+                            + matrix[current.getCurrentVertexNumber()][i];
                     if (v.getDistance() == -1) {
                         v.setDistance(newDistance);
                         visitedList.add(v);
-                    }
-                    else if (newDistance < v.getDistance()) {
+                    } else if (newDistance < v.getDistance()) {
                         v.setDistance(newDistance);
                     }
                 }
