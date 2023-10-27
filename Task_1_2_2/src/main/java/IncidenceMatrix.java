@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class IncidenceMatrix<T> implements Graph<T> {
@@ -11,6 +10,9 @@ public class IncidenceMatrix<T> implements Graph<T> {
     private int verticesSize;
     private int edgesSize;
 
+    /**
+     * Конструктор.
+     */
     public IncidenceMatrix() {
         vertices        = new HashMap<>();
         edges           = new HashMap<>();
@@ -22,7 +24,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
     /**
      * Увеличивает вместимость вершин в матрице.
      */
-    private void extendMatrixVertecies() {
+    private void extendMatrixVertices() {
         boolean[][] tmp = matrix;
 
         matrix = new boolean[verticesSize * 2][edgesSize];
@@ -43,7 +45,9 @@ public class IncidenceMatrix<T> implements Graph<T> {
         matrix = new boolean[verticesSize][edgesSize * 2];
 
         for (int i = 0; i < verticesSize; ++i) {
-            if (edgesSize >= 0) System.arraycopy(tmp[i], 0, matrix[i], 0, edgesSize);
+            if (edgesSize >= 0) {
+                System.arraycopy(tmp[i], 0, matrix[i], 0, edgesSize);
+            }
         }
 
         edgesSize *= 2;
@@ -57,8 +61,9 @@ public class IncidenceMatrix<T> implements Graph<T> {
     @Override
     public void addVertex(Vertex<T> vertex) {
         vertices.put(vertex.getCurrentVertexNumber(), vertex);
-        while (vertex.getCurrentVertexNumber() >= verticesSize)
-            extendMatrixVertecies();
+        while (vertex.getCurrentVertexNumber() >= verticesSize) {
+            extendMatrixVertices();
+        }
     }
 
     /**
@@ -120,9 +125,9 @@ public class IncidenceMatrix<T> implements Graph<T> {
      */
     @Override
     public void changeVertexValueByNumber(int number, T newValue) throws NoSuchElementException {
-       if (vertices.containsKey(number)) {
-           vertices.get(number).changeVertexValue(newValue);
-       } else {
+        if (vertices.containsKey(number)) {
+            vertices.get(number).changeVertexValue(newValue);
+        } else {
             throw new NoSuchElementException();
         }
     }
