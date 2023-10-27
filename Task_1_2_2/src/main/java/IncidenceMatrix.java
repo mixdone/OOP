@@ -122,7 +122,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
     public void changeVertexValueByNumber(int number, T newValue) throws NoSuchElementException {
        if (vertices.containsKey(number)) {
            vertices.get(number).changeVertexValue(newValue);
-       } else {
+       }  else {
            throw new NoSuchElementException();
        }
     }
