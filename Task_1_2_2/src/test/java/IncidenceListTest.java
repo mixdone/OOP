@@ -97,7 +97,7 @@ public class IncidenceListTest {
         graph.removeVertex(v2);
         graph.removeVertexByNumber(v3.getCurrentVertexNumber());
 
-        return Stream.of (
+        return Stream.of(
                 Arguments.of( true, v1, graph),
                 Arguments.of(false, v2, graph),
                 Arguments.of(false, v3, graph),

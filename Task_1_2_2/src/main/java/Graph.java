@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
+/**
+ * Граф.
+ * @param <T> - параметр вершины.
+ */
 public interface Graph<T> {
 
     /**

@@ -1,3 +1,8 @@
+/**
+ * Класс Вершина.
+ *
+ * @param <T> - параметр.
+ */
 public class Vertex<T> {
     private T value;
     private final int vertexNumber;

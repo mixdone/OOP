@@ -1,19 +1,26 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 
+
+/**
+ * Тесты для матрицы инцедентности.
+ */
 public class IncidenceMatrixTest {
 
     @ParameterizedTest
     @MethodSource("getTestVertexAddRemove")
-    void vertexAddRemoveTest(boolean expected, Vertex<String> vertex, IncidenceMatrix<String> graph) {
-        Assertions.assertEquals(expected, graph.returnVertices().containsKey(vertex.getCurrentVertexNumber()));
+    void vertexAddRemoveTest(boolean expected,
+                             Vertex<String> vertex,
+                             IncidenceMatrix<String> graph) {
+        Assertions.assertEquals(expected,
+                graph.returnVertices().containsKey(vertex.getCurrentVertexNumber()));
     }
 
     @ParameterizedTest
@@ -42,7 +49,8 @@ public class IncidenceMatrixTest {
     @ParameterizedTest
     @MethodSource("getTestEdgeChange")
     void edgeChangeWeightTest(int expected, Edge<String> edge, IncidenceMatrix<String> graph) {
-        Assertions.assertEquals(expected, graph.returnEdges().get(edge.getEdgeNumber()).getEdgeWeight());
+        Assertions.assertEquals(expected,
+                graph.returnEdges().get(edge.getEdgeNumber()).getEdgeWeight());
     }
 
     @Test
@@ -80,7 +88,7 @@ public class IncidenceMatrixTest {
         Vertex<String> v1 = new Vertex<>("hello");
         Vertex<String> v2 = new Vertex<>("world");
         Vertex<String> v3 = new Vertex<>("12345");
-        Vertex<String> v4 = new Vertex<>("12345");
+        final Vertex<String> v4 = new Vertex<>("12345");
 
         IncidenceMatrix<String> graph = new IncidenceMatrix<>();
 
@@ -92,7 +100,7 @@ public class IncidenceMatrixTest {
         graph.removeVertexByNumber(v3.getCurrentVertexNumber());
 
         return Stream.of(
-                Arguments.of( true, v1, graph),
+                Arguments.of(true, v1, graph),
                 Arguments.of(false, v2, graph),
                 Arguments.of(false, v3, graph),
                 Arguments.of(false, v4, graph));
