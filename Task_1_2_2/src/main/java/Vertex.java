@@ -31,8 +31,9 @@ public class Vertex<T> {
 
     /**
      * Изменяет значение вершины.
-     * 
+     *
      * @param newValue - новое значение вершины.
+     *
      */
     public void changeVertexValue(T newValue) {
         this.value = newValue;

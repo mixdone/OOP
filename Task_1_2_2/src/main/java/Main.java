@@ -4,12 +4,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Main class.
+ */
 public class Main {
 
+    /**
+     * Чтение из файла и вызов Дейкстры.
+     */
     public static void main(String[] args) {
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("./src/main/resources/input.txt")))
-        {
+        try (BufferedReader reader =
+                     new BufferedReader(new FileReader("./src/main/resources/input.txt"))) {
             String line;
             HashMap<String, Vertex<String>> buffer  = new HashMap<>();
             IncidenceList<String> graph             = new IncidenceList<>();
@@ -43,17 +48,20 @@ public class Main {
                 System.out.print(s);
                 System.out.print(" ");
             }
-        }
-        catch(IOException ex){
-
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
+    /**
+     *  Приводит строку к числу.
+     * @param s - сторка.
+     * @return Искомое число.
+     */
     public static int toInt(String s) {
         int ans = 0;
         for (int i = 0; i < s.length(); ++i) {
-            ans += (s.charAt(i) * (int)Math.pow(10, s.length() - i - 1));
+            ans += (s.charAt(i) * (int) Math.pow(10, s.length() - i - 1));
         }
 
         return ans;
