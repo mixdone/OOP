@@ -15,7 +15,7 @@ public class EdgeTest {
     @ParameterizedTest
     @MethodSource("getTestGetVertices")
     void valueOperationsTest(Vertex<String> v1, Vertex<String> v2, Edge<String> edge) {
-        Assertions.assertTrue(edge.getVertices().contains(v1.getCurrentVertexNumber()) 
+        Assertions.assertTrue(edge.getVertices().contains(v1.getCurrentVertexNumber())
                 && edge.getVertices().contains(v2.getCurrentVertexNumber()));
     }
 

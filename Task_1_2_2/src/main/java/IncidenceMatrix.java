@@ -152,14 +152,19 @@ public class IncidenceMatrix<T> implements Graph<T> {
      */
     @Override
     public Edge<T> addEdge(Vertex<T> v1, Vertex<T> v2, int weight) {
-        if (!vertices.containsKey(v1.getCurrentVertexNumber())) this.addVertex(v1);
-        if (!vertices.containsKey(v2.getCurrentVertexNumber())) this.addVertex(v2);
+        if (!vertices.containsKey(v1.getCurrentVertexNumber())) {
+            this.addVertex(v1);
+        }
+        if (!vertices.containsKey(v2.getCurrentVertexNumber())) {
+            this.addVertex(v2);
+        }
 
         Edge<T> edge = new Edge<>(v1, v2, weight);
         edges.put(edge.getEdgeNumber(), edge);
 
-        while (edgesSize <= edge.getEdgeNumber())
+        while (edgesSize <= edge.getEdgeNumber()) {
             this.extendMatrixEdges();
+        }
 
         matrix[v1.getCurrentVertexNumber()][edge.getEdgeNumber()] = true;
         matrix[v2.getCurrentVertexNumber()][edge.getEdgeNumber()] = true;
@@ -246,18 +251,18 @@ public class IncidenceMatrix<T> implements Graph<T> {
             for (int i = 0; i < edgesSize; ++i) {
                 if (matrix[current.getCurrentVertexNumber()][i]) {
                     Edge<T> e = this.getEdgeByNumber(i);
-                    int vNumber = e.getVertices().get(0);
-                    if (vNumber == current.getCurrentVertexNumber())
-                        vNumber = e.getVertices().get(1);
+                    int vertexNumber = e.getVertices().get(0);
+                    if (vertexNumber == current.getCurrentVertexNumber()) {
+                        vertexNumber = e.getVertices().get(1);
+                    }
 
-                    Vertex<T> v = this.getVertexByNumber(vNumber);
+                    Vertex<T> v = this.getVertexByNumber(vertexNumber);
 
                     int newDistance = current.getDistance() + e.getEdgeWeight();
                     if (v.getDistance() == -1) {
                         v.setDistance(newDistance);
                         visitedList.add(v);
-                    }
-                    else if (newDistance < v.getDistance()) {
+                    } else if (newDistance < v.getDistance()) {
                         v.setDistance(newDistance);
                     }
                 }
