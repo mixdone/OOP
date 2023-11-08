@@ -9,7 +9,7 @@ public class Main {
      * Находит все вхождения подтроки в тексте.
      * @param fileName  - имя файла с текстом.
      * @param substring - построка.
-     * @return ArrayList<Integer> - список позиций вхождений.
+     * @return ArrayList - список позиций вхождений.
      */
     public ArrayList<Integer> finder(String fileName, String substring) {
         int symbolsReaded = 0;
