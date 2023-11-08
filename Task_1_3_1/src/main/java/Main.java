@@ -5,6 +5,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Main {
+    /**
+     * Находит все вхождения подтроки в тексте.
+     * @param fileName  - имя файла с текстом.
+     * @param substring - построка.
+     * @return ArrayList<Integer> - список позиций вхождений.
+     */
     public ArrayList<Integer> finder(String fileName, String substring) {
         int symbolsReaded = 0;
         int j;
@@ -12,12 +18,15 @@ public class Main {
         ArrayList<Integer> result = new ArrayList<>();
         StringBuilder str = new StringBuilder();
         try {
-            BufferedReader inputData = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8));
+            BufferedReader inputData =
+                    new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8));
             if (inputData.read(buffer, 0, substring.length()) != -1) {
                 for (char c : buffer) {
                     str.append(c);
                 }
-                if((j = str.indexOf(substring)) != -1) result.add(j + symbolsReaded);
+                if ((j = str.indexOf(substring)) != -1) {
+                    result.add(j + symbolsReaded);
+                }
                 symbolsReaded += substring.length();
             }
             while (inputData.read(buffer, 0, substring.length()) != -1) {
