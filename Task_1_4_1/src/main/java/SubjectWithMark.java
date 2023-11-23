@@ -15,6 +15,7 @@ public class SubjectWithMark {
 
     /**
      * Возвращает название предмета.
+     *
      * @return название предмета.
      */
     public String getName() {
@@ -23,6 +24,7 @@ public class SubjectWithMark {
 
     /**
      * Возвращает оценку.
+     *
      * @return оценку.
      */
     public Mark getMark() {

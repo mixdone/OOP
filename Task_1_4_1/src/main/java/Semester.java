@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+ * Класс семестра.
+ */
 public class Semester {
     private final ArrayList<SubjectWithMark> subjects = new ArrayList<>();
 

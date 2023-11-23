@@ -1,10 +1,9 @@
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
 
 public class TestCreditBook {
     private static final CreditBook goodStudent         = new CreditBook();
@@ -30,7 +29,8 @@ public class TestCreditBook {
 
         Semester satisfactorySemester   = new Semester();
         SubjectWithMark rus             = new SubjectWithMark("Russian", Mark.SATISFACTORILY);
-        SubjectWithMark dp              = new SubjectWithMark("Digital Platforms", Mark.SATISFACTORILY);
+        SubjectWithMark dp
+                = new SubjectWithMark("Digital Platforms", Mark.SATISFACTORILY);
 
         satisfactorySemester.addSubject(rus);
         satisfactorySemester.addSubject(dp);
