@@ -18,10 +18,36 @@ public class Operation {
      */
     public Operation(String operation) throws IllegalArgumentException {
         name = operation;
-        argumentCount = switch (name) {
-            case "+", "-", "*", "/", "pow" -> 2;
-            case "log", "sqrt", "sin", "cos" -> 1;
-            default     -> throw new IllegalArgumentException();
+        switch (name) {
+            case "+":
+                argumentCount = 2;
+                break;
+            case "-":
+                argumentCount = 2;
+                break;
+            case "*":
+                argumentCount = 2;
+                break;
+            case "/":
+                argumentCount = 2;
+                break;
+            case "pow":
+                argumentCount = 2;
+                break;
+            case "log":
+                argumentCount = 1;
+                break;
+            case "sin":
+                argumentCount = 1;
+                break;
+            case "cos":
+                argumentCount = 1;
+                break;
+            case "sqrt":
+                argumentCount = 1;
+                break;
+            default:
+                throw new IllegalArgumentException();
         };
     }
 
