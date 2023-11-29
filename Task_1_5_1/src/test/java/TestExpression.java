@@ -22,6 +22,7 @@ public class TestExpression {
 
     static Stream<Arguments> getTests() {
         return Stream.of(
+                Arguments.of(500, "- 1000.15 500.15"),
                 Arguments.of(512, "pow 2 + sin - 7 7 9"),
                 Arguments.of(5, "+ 7 - sqrt 4"),
                 Arguments.of(1, " + pow sin 2 2 pow cos 2 2"),

@@ -31,17 +31,15 @@ public class Expression {
     public double calculate() throws IllegalOperationException, WrongPolishNotationException {
         double number;
         for (String s : expression) {
-            try {
-                number = Double.parseDouble(s);
-            } catch (NumberFormatException e) {
+            if (s.matches("^-?[0-9]*[.]?[0-9]+$")) {
+                stack.push(Double.parseDouble(s));
+            } else {
                 try {
-                stack.push(new Operation(s).apply(stack));
+                    stack.push(new Operation(s).apply(stack));
                 } catch (EmptyStackException e2) {
                     throw new WrongPolishNotationException();
                 }
-                continue;
             }
-            stack.push(number);
         }
 
         double answer = stack.pop();
