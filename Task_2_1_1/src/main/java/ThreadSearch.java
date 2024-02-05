@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Многопоточный поиск.
  */
-public class ThreadSearch{
+public class ThreadSearch {
     private static AtomicBoolean hasNotPrime = new AtomicBoolean();
 
     static class OneThreadSearch extends Thread {
@@ -24,7 +24,7 @@ public class ThreadSearch{
          */
         @Override
         public void run() {
-            if(SequentialSearch.notPrimeSearch(list)) {
+            if (SequentialSearch.notPrimeSearch(list)) {
                 hasNotPrime.set(true);
             }
         }
@@ -36,9 +36,10 @@ public class ThreadSearch{
      * @param list - список целых чисел.
      * @param threadAmount - желаемое количество потоков.
      * @return boolean.
-     * @throws InterruptedException
+     * @throws InterruptedException - join exception.
      */
-    public static boolean notPrimeSearch(List<Integer> list, int threadAmount) throws InterruptedException {
+    public static boolean notPrimeSearch(List<Integer> list, int threadAmount)
+            throws InterruptedException {
         hasNotPrime.set(false);
 
         if (threadAmount > list.size()) {
@@ -52,7 +53,8 @@ public class ThreadSearch{
             threads[i] = new OneThreadSearch(list.subList(i * part, (i + 1) * part));
             threads[i].start();
         }
-        threads[threadAmount - 1] = new OneThreadSearch(list.subList((threadAmount - 1) * part, list.size()));
+        threads[threadAmount - 1] =
+                new OneThreadSearch(list.subList((threadAmount - 1) * part, list.size()));
         threads[threadAmount - 1].start();
 
         for (int i = 0; i < threadAmount; ++i) {

@@ -9,7 +9,7 @@ public class Main {
      * Main.
      *
      * @param args - args.
-     * @throws InterruptedException
+     * @throws InterruptedException - thread join exception.
      */
     public static void main(String[] args) throws InterruptedException {
         List<Integer> list = Arrays.asList(20319251, 6997967, 6998009, 6998029, 27644437,

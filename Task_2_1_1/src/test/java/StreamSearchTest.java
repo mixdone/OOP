@@ -1,9 +1,11 @@
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * StreamSearchTest.
+ */
 public class StreamSearchTest {
     @Test
     public void test1() {
