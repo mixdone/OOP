@@ -16,12 +16,16 @@ public class IsNotPrimeTest {
 
     static Stream<Arguments> getTests() {
         return Stream.of(
-                Arguments.of(true, 1),
                 Arguments.of(true, 0),
+                Arguments.of(true, 1),
                 Arguments.of(false, 2),
                 Arguments.of(false, 3),
                 Arguments.of(true, 4),
                 Arguments.of(false, 5),
+                Arguments.of(false, 11),
+                Arguments.of(false, 17),
+                Arguments.of(true, 21),
+                Arguments.of(true, 33),
                 Arguments.of(true, 10000));
     }
 }

@@ -19,4 +19,16 @@ public class StreamSearchTest {
                 6998009, 6998029, 6998039, 20165149, 6998051, 6998053);
         Assertions.assertFalse(StreamSearch.notPrimeSearch(list));
     }
+    
+    @Test
+    public void test3() throws InterruptedException {
+        List<Integer> list = Arrays.asList(2, 3, 5, 7, 0);
+        Assertions.assertTrue(ThreadSearch.notPrimeSearch(list, 1));
+    }
+
+    @Test
+    public void test4() throws InterruptedException {
+        List<Integer> list = Arrays.asList(2, 3, 5, 7, 1);
+        Assertions.assertTrue(ThreadSearch.notPrimeSearch(list, 1));
+    }
 }
