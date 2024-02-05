@@ -7,7 +7,7 @@ import java.util.List;
 public class Main {
     /**
      * Main.
-     * 
+     *
      * @param args - args.
      * @throws InterruptedException
      */
