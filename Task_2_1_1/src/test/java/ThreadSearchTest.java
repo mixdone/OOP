@@ -17,18 +17,24 @@ public class ThreadSearchTest {
     public void test2() throws InterruptedException {
         List<Integer> list = Arrays.asList(20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
                 6998009, 6998029, 6998039, 20165149, 6998051, 6998053);
-        Assertions.assertFalse(ThreadSearch.notPrimeSearch(list, 1));
+        Assertions.assertFalse(ThreadSearch.notPrimeSearch(list, 2));
     }
 
     @Test
     public void test3() throws InterruptedException {
         List<Integer> list = Arrays.asList(2, 3, 5, 7, 0);
-        Assertions.assertTrue(ThreadSearch.notPrimeSearch(list, 1));
+        Assertions.assertTrue(ThreadSearch.notPrimeSearch(list, 3));
     }
 
     @Test
     public void test4() throws InterruptedException {
         List<Integer> list = Arrays.asList(2, 3, 5, 7, 1);
-        Assertions.assertTrue(ThreadSearch.notPrimeSearch(list, 1));
+        Assertions.assertTrue(ThreadSearch.notPrimeSearch(list, 4));
+    }
+
+    @Test
+    public void test5() throws InterruptedException {
+        List<Integer> list = Arrays.asList(2, 3, 5);
+        Assertions.assertFalse(ThreadSearch.notPrimeSearch(list, 5));
     }
 }
