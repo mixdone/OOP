@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -18,10 +20,11 @@ public class Tests {
         @Override
         public void run() {
             try {
+                String[] s = {"", "", ""};
                 if (num == 0) {
-                    Server.main("");
+                    Server.main(s);
                 } else {
-                    Client.main("");
+                    Client.main(s);
                 }
             } catch (IOException e) {
                 throw new RuntimeException();
