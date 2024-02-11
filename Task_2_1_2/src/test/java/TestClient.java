@@ -2,7 +2,9 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
+/**
+ * Тесты.
+ */
 public class TestClient {
     @Test
     public void test() {

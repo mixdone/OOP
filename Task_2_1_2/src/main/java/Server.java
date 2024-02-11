@@ -93,7 +93,7 @@ public class Server {
      * @param args main.
      * @throws IOException ошибки.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String args) throws IOException {
         try (ServerSocket server = new ServerSocket(PORT)) {
             while (clientNumber < maxClientNumber) {
                 Socket socket = server.accept();
