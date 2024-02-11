@@ -89,6 +89,7 @@ public class Server {
     public static int maxClientNumber = 2;
 
     /**
+     * Сервер.
      *
      * @param args main.
      * @throws IOException ошибки.
