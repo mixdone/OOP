@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
@@ -22,9 +25,9 @@ public class Server {
      */
     static class OneServerThread extends Thread {
 
-        private Socket socket;
-        private Scanner receive;
-        private BufferedWriter send;
+        private final Socket socket;
+        private final Scanner receive;
+        private final BufferedWriter send;
         private List<Integer> list;
 
         /**
@@ -74,7 +77,7 @@ public class Server {
                 finish.getAndIncrement();
                 try {
                     socket.close();
-                } catch (IOException ignored) {}
+                } catch (IOException ignored) { }
             }
         }
 
@@ -91,8 +94,7 @@ public class Server {
      * @throws IOException ошибки.
      */
     public static void main(String[] args) throws IOException {
-        ServerSocket server = new ServerSocket(PORT);
-        try {
+        try (ServerSocket server = new ServerSocket(PORT)) {
             while (clientNumber < maxClientNumber) {
                 Socket socket = server.accept();
                 clientNumber++;
@@ -104,7 +106,7 @@ public class Server {
                 }
             }
 
-            var list = Arrays.asList(4, 4, 4, 4, 4, 4, 4, 5, 4, 4 ,4); // Пример
+            var list = Arrays.asList(4, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4); // Пример
             int part = list.size() / clientNumber;
 
             for (int i = 0; i < clientNumber - 1; i++) {
@@ -127,8 +129,6 @@ public class Server {
 
             System.out.print(hasNotPrime.get());
 
-        } finally {
-            server.close();
         }
     }
 }
