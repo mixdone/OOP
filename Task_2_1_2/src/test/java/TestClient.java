@@ -10,7 +10,7 @@ public class TestClient {
     public void test0() {
         Assertions.assertTrue(
                 Client.NotPrimeSearch.notPrimeSearch(
-                        Arrays.asList(4, 4, 4, 4, 4, 4, 4, 5, 4, 4 ,4)
+                        Arrays.asList(4, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4)
                 )
         );
     }
@@ -19,7 +19,7 @@ public class TestClient {
     public void test1() {
         Assertions.assertTrue(
                 Client.NotPrimeSearch.notPrimeSearch(
-                        Arrays.asList(4, 4, 4, 4, 4, 4, 4, 1, 4, 4 ,4)
+                        Arrays.asList(4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4)
                 )
         );
     }
@@ -28,7 +28,7 @@ public class TestClient {
     public void test3() {
         Assertions.assertTrue(
                 Client.NotPrimeSearch.notPrimeSearch(
-                        Arrays.asList(4, 4, 4, 4, 4, 4, 4, 2, 4, 4 ,4)
+                        Arrays.asList(4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4)
                 )
         );
     }
@@ -37,7 +37,7 @@ public class TestClient {
     public void test4() {
         Assertions.assertTrue(
                 Client.NotPrimeSearch.notPrimeSearch(
-                        Arrays.asList(4, 4, 4, 4, 4, 4, 4, 0, 4, 4 ,4)
+                        Arrays.asList(4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4)
                 )
         );
     }
