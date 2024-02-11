@@ -1,8 +1,10 @@
-import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Тест.
+ */
 public class Tests {
 
     static class MyThread extends Thread {

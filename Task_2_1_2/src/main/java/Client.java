@@ -1,4 +1,8 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +67,11 @@ public class Client {
     public static void main(String args) {
         try {
             try {
-                clientSocket = new Socket("localhost", 8080);
+                try {
+                    clientSocket = new Socket("localhost", 8080);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 receive = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 send = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
 
