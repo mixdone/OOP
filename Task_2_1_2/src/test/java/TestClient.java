@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
  */
 public class TestClient {
     @Test
-    public void test() {
+    public void test0() {
         Assertions.assertTrue(
                 Client.NotPrimeSearch.notPrimeSearch(
                         Arrays.asList(4, 4, 4, 4, 4, 4, 4, 5, 4, 4 ,4)
@@ -38,6 +38,15 @@ public class TestClient {
         Assertions.assertTrue(
                 Client.NotPrimeSearch.notPrimeSearch(
                         Arrays.asList(4, 4, 4, 4, 4, 4, 4, 0, 4, 4 ,4)
+                )
+        );
+    }
+
+    @Test
+    public void test() {
+        Assertions.assertFalse(
+                Client.NotPrimeSearch.notPrimeSearch(
+                    Arrays.asList(3, 3, 3, 3, 3, 5, 7, 11, 31)
                 )
         );
     }
