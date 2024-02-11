@@ -44,7 +44,6 @@ public class Server {
 
         /**
          * Установка списка для конкретного клиента.
-         *
          * @param newList список.
          */
         public void initList(List<Integer> newList) {
