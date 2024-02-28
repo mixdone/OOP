@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
@@ -18,29 +16,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class Server {
 
-    static final AtomicBoolean hasNotPrime = new AtomicBoolean(false);
-    static final ArrayList<Boolean> computationComplete = new ArrayList<>();
+    public static final AtomicBoolean hasNotPrime = new AtomicBoolean(false);
+    public static final ArrayList<Boolean> computationComplete = new ArrayList<>();
 
-    static class ServerSomthing extends Thread {
+    public static class MyThread extends Thread {
 
         private final Socket socket;
-        private final Scanner receive;
+        private final BufferedReader receive;
         private final BufferedWriter send;
         private List<Integer> integerList;
         private int listPart;
 
-        /**
-         * Основной конструктор.
-         *
-         * @param socket - сокет.
-         *
-         * @throws IOException - ошибки потоков.
-         */
-        public ServerSomthing(Socket socket) throws IOException {
-            this.socket = socket;
-            receive     = new Scanner(socket.getInputStream());
-            send        = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        }
 
         /**
          * Конструктор переиспользования сокета.
@@ -49,7 +35,7 @@ public class Server {
          * @param in        - сканер входящий сообщений от клиента
          * @param out       - поток отправки сообщений клиенту
          */
-        public ServerSomthing(Socket socket, Scanner in, BufferedWriter out) {
+        public MyThread(Socket socket, BufferedReader in, BufferedWriter out) {
             this.socket = socket;
             receive     = in;
             send        = out;
@@ -64,7 +50,6 @@ public class Server {
         public void addList(List<Integer> intList, int part) {
             integerList = intList;
             listPart = part;
-
         }
 
         /**
@@ -90,7 +75,7 @@ public class Server {
          *
          * @return receive
          */
-        public Scanner getReceive() {
+        public BufferedReader getReceive() {
             return receive;
         }
 
@@ -101,13 +86,15 @@ public class Server {
         public void run() {
             int listLength = integerList.size();
             try {
-                send.write(String.valueOf(listLength));
-                receive.nextBoolean();
+                send.write(listLength + "\n");
+                send.flush();
+
                 for (Integer x : integerList) {
-                    send.write(String.valueOf(x));
+                    send.write(x + "\n");
+                    send.flush();
                 }
-                receive.nextBoolean();
-                if (receive.nextBoolean()) {
+                //receive.readLine();
+                if (Boolean.parseBoolean(receive.readLine())) {
                     hasNotPrime.set(true);
                 }
                 computationComplete.set(listPart, true);
@@ -121,11 +108,12 @@ public class Server {
     private static final int PORT = 8080;
     private static int socketNumber = 0;
 
-    private static boolean threadManager(LinkedList<ServerSomthing> sockets, ArrayList<Integer> integers) throws SocketException {
+    private static boolean threadManager(LinkedList<MyThread> sockets, ArrayList<Integer> integers) throws SocketException {
         int part = integers.size() / socketNumber;
         for (int i = 0; i < socketNumber - 1; i++) {
             sockets.get(i).addList(integers.subList(i * part, (i + 1) * part), i);
             sockets.get(i).start();
+
         }
 
         sockets.get(socketNumber - 1).addList(integers.subList((socketNumber - 1)
@@ -134,7 +122,7 @@ public class Server {
 
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -145,13 +133,13 @@ public class Server {
 
         ArrayList<Integer> newList = new ArrayList<>();
         int uncompletedSocketNumber = 0;
-        LinkedList<ServerSomthing> newSockets = new LinkedList<>();
+        LinkedList<MyThread> newSockets = new LinkedList<>();
         for (int i = 0; i < socketNumber - 1; i++) {
             if (!computationComplete.get(i)) {
                 ++uncompletedSocketNumber;
                 newList.addAll(integers.subList(i * part, (i + 1) * part));
             } else {
-                newSockets.add(new ServerSomthing(sockets.get(i).getSocket(),
+                newSockets.add(new MyThread(sockets.get(i).getSocket(),
                         sockets.get(i).getReceive(), sockets.get(i).getSend()));
             }
         }
@@ -160,10 +148,9 @@ public class Server {
             ++uncompletedSocketNumber;
             newList.addAll(integers.subList((socketNumber - 1) * part, ((socketNumber - 1) + 1) * part));
         } else {
-            newSockets.add(new ServerSomthing(sockets.get(socketNumber - 1).getSocket(),
+            newSockets.add(new MyThread(sockets.get(socketNumber - 1).getSocket(),
                     sockets.get(socketNumber - 1).getReceive(), sockets.get(socketNumber - 1).getSend()));
         }
-
 
         if (uncompletedSocketNumber > 0) {
             socketNumber = newSockets.size();
@@ -173,20 +160,24 @@ public class Server {
             return threadManager(newSockets, newList);
         }
 
+
+
         return false;
     }
 
-    private static LinkedList<ServerSomthing> server() {
-        LinkedList<ServerSomthing> serverList = new LinkedList<>();
+    private static LinkedList<MyThread> server() {
+        LinkedList<MyThread> serverList = new LinkedList<>();
         try {
             ServerSocket server = new ServerSocket(PORT);
             try (server) {
-                server.setSoTimeout(5000);
+                server.setSoTimeout(10000);
                 while (true) {
                     Socket socket = new Socket();
                     try {
                         socket = server.accept();
-                        serverList.add(new ServerSomthing(socket));
+                        var input   = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        var output  = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                        serverList.add(new MyThread(socket, input, output));
                         ++socketNumber;
                         System.out.println("Success connection!!!");
                     } catch (SocketTimeoutException e) {
@@ -206,18 +197,41 @@ public class Server {
 
     private static ArrayList<Integer> reader() {
         Scanner stdin = new Scanner(System.in);
+        System.out.println("Enter the size of the array:\n");
         int len = stdin.nextInt();
+        System.out.println("Enter the array:\n");
         ArrayList<Integer> integers = new ArrayList<>();
         for (int i = 0; i < len; i++) {
             integers.add(stdin.nextInt());
         }
-
+        System.out.println("Computation start!\n");
         return integers;
     }
 
-    public static void main(String[] args) {
-        LinkedList<ServerSomthing> serverList = server();
+    public static boolean forTest(ArrayList<Integer> integers) {
+        LinkedList<MyThread> serverList = server();
         if (socketNumber > 0) {
+            for (int i = 0; i < socketNumber; i++) {
+                computationComplete.add(false);
+            }
+            try {
+                return threadManager(serverList, integers);
+            } catch (SocketException e) {
+                System.out.println("Sorry, there was a critical error, try again later.");
+            }
+        } else {
+            System.out.println("Not enough computing power.");
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        LinkedList<MyThread> serverList = server();
+        if (socketNumber > 0) {
+            for (int i = 0; i < socketNumber; i++) {
+                computationComplete.add(false);
+            }
             try {
                 System.out.println(threadManager(serverList, reader()));
             } catch (SocketException e) {

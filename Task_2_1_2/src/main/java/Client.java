@@ -28,28 +28,21 @@ public class Client {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                receive = new BufferedReader(new
-                        InputStreamReader(clientSocket.getInputStream()));
-                send = new BufferedWriter(new
-                        OutputStreamWriter(clientSocket.getOutputStream()));
+                receive = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                send = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
                 while (true) {
-                    int len = receive.read();
+                    int len = Integer.parseInt(receive.readLine());
                     if (len == -1) {
                         break;
                     }
                     ArrayList<Integer> numberList = new ArrayList<>();
 
-                    send.write(String.valueOf(true));
-                    send.flush();
-
                     for (int i = 0; i < len; i++) {
-                        numberList.add(receive.read());
+                        numberList.add(Integer.parseInt(receive.readLine()));
                     }
-                    send.write(String.valueOf(true));
-                    send.flush();
 
                     NotPrimeSearch search = new NotPrimeSearch();
-                    send.write(String.valueOf(search.notPrimeSearch(numberList)));
+                    send.write(search.notPrimeSearch(numberList) + "\n");
                     send.flush();
                 }
             } finally {

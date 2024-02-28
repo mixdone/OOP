@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
  */
 public class TestConnection {
 
-    static class MyThread extends Thread {
+    static class Thread1 extends Thread {
         private final int num;
 
-        public MyThread(int n) {
+        public Thread1(int n) {
             num = n;
             start();
         }
@@ -25,8 +25,9 @@ public class TestConnection {
 
     @Test
     public void test() {
-        for (int i = 0; i < 3; i++) {
-            new MyThread(i);
+        for (int i = 0; i < 10; i++) {
+            new Thread1(i);
         }
     }
+
 }
