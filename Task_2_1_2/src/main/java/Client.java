@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
@@ -45,6 +46,7 @@ public class Client {
                     send.write(search.notPrimeSearch(numberList) + "\n");
                     send.flush();
                 }
+            } catch (NumberFormatException ignored) {
             } finally {
                 clientSocket.close();
                 receive.close();

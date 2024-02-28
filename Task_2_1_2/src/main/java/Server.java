@@ -79,6 +79,15 @@ public class Server {
             return receive;
         }
 
+        public void finish(){
+            try {
+                send.write(-1 + "\n");
+                send.flush();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
         /**
          * run.
          */
@@ -138,6 +147,7 @@ public class Server {
 
         if (hasNotPrime.get()) {
             return true;
+
         }
 
         ArrayList<Integer> newList = new ArrayList<>();
