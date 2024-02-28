@@ -93,7 +93,7 @@ public class Server {
                     send.write(x + "\n");
                     send.flush();
                 }
-                //receive.readLine();
+
                 if (Boolean.parseBoolean(receive.readLine())) {
                     hasNotPrime.set(true);
                 }
@@ -108,7 +108,16 @@ public class Server {
     private static final int PORT = 8080;
     private static int socketNumber = 0;
 
-    private static boolean threadManager(LinkedList<MyThread> sockets, ArrayList<Integer> integers) throws SocketException {
+    /**
+     * Менеджер потоков.
+     *
+     * @param sockets - клиенты.
+     * @param integers - входные данные.
+     *
+     * @return boolean/
+     */
+    private static boolean threadManager(LinkedList<MyThread> sockets,
+                                         ArrayList<Integer> integers) throws SocketException {
         int part = integers.size() / socketNumber;
         for (int i = 0; i < socketNumber - 1; i++) {
             sockets.get(i).addList(integers.subList(i * part, (i + 1) * part), i);
@@ -165,6 +174,11 @@ public class Server {
         return false;
     }
 
+    /**
+     * Сервер.
+     *
+     * @return threads.
+     */
     private static LinkedList<MyThread> server() {
         LinkedList<MyThread> serverList = new LinkedList<>();
         try {
@@ -175,8 +189,10 @@ public class Server {
                     Socket socket = new Socket();
                     try {
                         socket = server.accept();
-                        var input   = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        var output  = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                        var input   = new BufferedReader(new
+                                InputStreamReader(socket.getInputStream()));
+                        var output  = new BufferedWriter(new
+                                OutputStreamWriter(socket.getOutputStream()));
                         serverList.add(new MyThread(socket, input, output));
                         ++socketNumber;
                         System.out.println("Success connection!!!");
@@ -195,6 +211,11 @@ public class Server {
         return serverList;
     }
 
+    /**
+     * Считывает входные данные со стандартного потока ввода.
+     *
+     * @return integers.
+     */
     private static ArrayList<Integer> reader() {
         Scanner stdin = new Scanner(System.in);
         System.out.println("Enter the size of the array:\n");
@@ -208,6 +229,13 @@ public class Server {
         return integers;
     }
 
+    /**
+     * Основная функция, принимающая на вход входны данные.
+     *
+     * @param integers - входные данные.
+     *
+     * @return boolean.
+     */
     public static boolean forTest(ArrayList<Integer> integers) {
         LinkedList<MyThread> serverList = server();
         if (socketNumber > 0) {
