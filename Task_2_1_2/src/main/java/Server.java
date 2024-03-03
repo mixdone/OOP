@@ -28,10 +28,8 @@ public class Server {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Server main thread -- 1");
-        System.out.println(hasNotPrime.get());
+
         if (hasNotPrime.get()) {
-            //System.out.println("Server main thread -- 2");
             for (ClientHandler x : threads) {
                 x.interrupt();
                 x.finish();
@@ -134,15 +132,13 @@ public class Server {
      *
      * @return list of lists.
      */
-    private ArrayList<List<Integer>> split (ArrayList<Integer> list, int number) {
+    private ArrayList<List<Integer>> split(ArrayList<Integer> list, int number) {
         ArrayList<List<Integer>> matrix = new ArrayList<>();
-        System.out.println(list.size());
+        
         if (number > list.size()) {
             number = list.size();
         }
-        if (number == 0) {
-            throw new RuntimeException("Ты че черт, проверяй, что предаешь в фунцию");
-        }
+
         int part = list.size() / number;
 
         for (int i = 0; i < number - 1; i++) {
@@ -182,7 +178,6 @@ public class Server {
                 ArrayList<ClientHandler> threads = receiver(server);
                 var splittedList = split(integers, threads.size());
                 result = threadManager(threads, splittedList);
-                System.out.println("Server main thread -- 3");
             } catch (IOException exception) {
                 throw new RuntimeException(exception);
             } finally {
@@ -193,7 +188,7 @@ public class Server {
         } catch (IOException e) {
             throw new RuntimeException();
         }
-        System.out.println("Server main thread -- 4");
+
         return result;
     }
 
@@ -287,21 +282,18 @@ public class Server {
         public void run() {
             send.println(true);
             send.flush();
-            System.out.println("Server --- 1");
+
             if (receive.hasNextBoolean()) {
                 receive.nextBoolean();
             }
-            System.out.println("Server --- 2");
-            System.out.println(integerList.size());
+
             send.println(integerList.size());
             for (Integer x : integerList) {
                 send.println(x);
             }
             send.flush();
-            System.out.println("Server --- 3");
 
             if (receive.hasNextBoolean()) {
-                System.out.println("Server --- true");
                 hasNotPrime.set(receive.nextBoolean());
                 hasDone.set(number, true);
             }

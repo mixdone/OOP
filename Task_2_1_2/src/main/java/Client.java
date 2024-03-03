@@ -57,7 +57,9 @@ public class Client {
         } finally {
             try {
                 socket.close();
-            } catch (IOException ignored) {}
+            } catch (IOException ignored) {
+                
+            }
         }
     }
 }
