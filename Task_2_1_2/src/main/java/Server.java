@@ -134,7 +134,7 @@ public class Server {
      */
     private ArrayList<List<Integer>> split(ArrayList<Integer> list, int number) {
         ArrayList<List<Integer>> matrix = new ArrayList<>();
-        
+
         if (number > list.size()) {
             number = list.size();
         }
