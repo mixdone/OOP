@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TestClientServer {
+public class TestClientServerFalse {
+
     Boolean result = false;
 
     private static class ClientThread implements Runnable {
@@ -31,8 +32,8 @@ public class TestClientServer {
     }
 
     @Test
-    public void testTrue() {
-        var list = new ArrayList<>(Arrays.asList(3, 5, 7, 11, 12, 13, 17));
+    public void testFalse() {
+        var list = new ArrayList<>(Arrays.asList(3, 5, 7, 11, 13, 17));
         var server  = new Thread(new ServerThread(new Server(), list));
         var c1      = new Thread(new ClientThread());
         var c2      = new Thread(new ClientThread());
@@ -46,10 +47,12 @@ public class TestClientServer {
             c2.join();
             server.join();
 
-            Assertions.assertTrue(result);
+            Assertions.assertFalse(result);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
     }
+
+
 }
