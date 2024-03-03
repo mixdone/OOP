@@ -1,61 +1,62 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.Socket;
-import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
- * Клиент. Подклбчается к серверу и ждет от него работы.
- * Своего рода наемник, завершая вычисления, отрубается.
+ * Client class. Connected to server, get task, calculate, return result.
  */
 public class Client {
-    private static Socket clientSocket;
-    private static BufferedReader receive;
-    private static BufferedWriter send;
-
-    /**
-     * Реализует логиуку взааимодействия с сервером.
-     *
-     * @param args main...
-     */
+    private static Socket socket;
     public static void main(String[] args) {
         try {
-            try {
-                try {
-                    clientSocket = new Socket("localhost", 8080);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+            socket = new Socket("localhost", 8080);
+            var in = new Scanner(socket.getInputStream());
+            var out = new PrintWriter(socket.getOutputStream());
+
+            while (true) {
+                if (in.hasNextBoolean()) {
+                    in.nextBoolean();
+                    out.println(true);
+                    out.flush();
                 }
-                receive = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                send = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-                while (true) {
-                    int len = Integer.parseInt(receive.readLine());
-                    if (len == -1) {
-                        break;
-                    }
-                    ArrayList<Integer> numberList = new ArrayList<>();
+                System.out.println("Client --- 1");
 
-                    for (int i = 0; i < len; i++) {
-                        numberList.add(Integer.parseInt(receive.readLine()));
-                    }
-
-                    NotPrimeSearch search = new NotPrimeSearch();
-                    send.write(search.notPrimeSearch(numberList) + "\n");
-                    send.flush();
+                int len = 0;
+                if (in.hasNextInt()) {
+                    System.out.println("lalala");
+                    len = in.nextInt();
                 }
-            } catch (NumberFormatException ignored) {
-            } finally {
-                clientSocket.close();
-                receive.close();
-                send.close();
-
+                System.out.println(len);
+                System.out.println("Client --- 2");
+                if (len == 0) break;
+                System.out.println("Client --- 3");
+                ArrayList<Integer> list = new ArrayList<>();
+                for (int i = 0; i < len; i++) {
+                    if (in.hasNextInt()) {
+                        list.add(in.nextInt());
+                    }
+                }
+                System.out.println("Client --- 4");
+                NotPrimeSearch search = new NotPrimeSearch();
+                boolean result = search.notPrimeSearch(list);
+                System.out.println("Client --- 5");
+                if (result) {
+                    out.println(true);
+                    out.flush();
+                } else {
+                    out.println(false);
+                    out.flush();
+                }
+                System.out.println("Client --- 6");
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                socket.close();
+            } catch (IOException ignored) {}
         }
-
     }
 }
