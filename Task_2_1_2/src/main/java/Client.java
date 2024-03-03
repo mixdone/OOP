@@ -8,6 +8,12 @@ import java.util.Scanner;
  */
 public class Client {
     private static Socket socket;
+
+    /**
+     * Client.
+     *
+     * @param args - main.
+     */
     public static void main(String[] args) {
         try {
             socket = new Socket("localhost", 8080);
@@ -20,27 +26,23 @@ public class Client {
                     out.println(true);
                     out.flush();
                 }
-                System.out.println("Client --- 1");
 
                 int len = 0;
                 if (in.hasNextInt()) {
-                    System.out.println("lalala");
                     len = in.nextInt();
                 }
-                System.out.println(len);
-                System.out.println("Client --- 2");
-                if (len == 0) break;
-                System.out.println("Client --- 3");
+
+                if (len == 0) {
+                    break;
+                }
                 ArrayList<Integer> list = new ArrayList<>();
                 for (int i = 0; i < len; i++) {
                     if (in.hasNextInt()) {
                         list.add(in.nextInt());
                     }
                 }
-                System.out.println("Client --- 4");
                 NotPrimeSearch search = new NotPrimeSearch();
                 boolean result = search.notPrimeSearch(list);
-                System.out.println("Client --- 5");
                 if (result) {
                     out.println(true);
                     out.flush();
@@ -48,7 +50,6 @@ public class Client {
                     out.println(false);
                     out.flush();
                 }
-                System.out.println("Client --- 6");
             }
 
         } catch (IOException e) {
