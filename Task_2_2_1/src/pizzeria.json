@@ -1,0 +1,17 @@
+{
+  "time" : 10000,
+  "bakers" : [
+    {
+      "name" : "Petya Vasichkin",
+      "productivity" : 3
+    },
+    {
+      "name" : "Ivan Frolov",
+      "productivity" : 2
+    },
+    {
+      "name" : "Artem Kustov",
+      "productivity" : 4
+    }
+  ]
+}
