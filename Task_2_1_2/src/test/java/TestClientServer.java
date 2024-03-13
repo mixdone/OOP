@@ -34,7 +34,7 @@ public class TestClientServer {
 
     @Test
     public void testTrue() {
-        var list = new ArrayList<>(Arrays.asList(3, 5, 7, 11, 12, 13, 17, 1, 0, 2));
+        var list = new ArrayList<>(Arrays.asList(3, 5, 7, 11, 12, 13, 21, 17, 1, 0, 2));
         var server  = new Thread(new ServerThread(new Server(), list));
         var c1      = new Thread(new ClientThread());
         var c2      = new Thread(new ClientThread());
