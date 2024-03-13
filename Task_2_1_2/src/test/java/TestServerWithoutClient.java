@@ -36,7 +36,7 @@ public class TestServerWithoutClient {
     @Test
     public void testFalse() {
         var list = new ArrayList<>(Arrays.asList(3, 5, 7, 11, 13, 17));
-        var server  = new Thread(new TestServerWithoutClient.ServerThread(new Server(), list));
+        var server  = new Thread(new ServerThread(new Server(), list));
 
         server.start();
 
