@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Test Client Server.s
+ * Test Client Server.
  */
 public class TestServerClientDie {
     Boolean result = false;
