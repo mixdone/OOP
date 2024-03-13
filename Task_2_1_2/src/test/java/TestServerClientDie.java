@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
+/**
+ * Test Client Server.s
+ */
 public class TestServerClientDie {
     Boolean result = false;
 
