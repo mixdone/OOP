@@ -4,5 +4,5 @@ public class ReadJsonFile {
     public ReadJsonFile(String fileName) {
         this.file = fileName;
     }
-
+    
 }
