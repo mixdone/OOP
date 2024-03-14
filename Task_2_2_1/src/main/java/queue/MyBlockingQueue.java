@@ -1,5 +1,10 @@
 package queue;
 
+/**
+ * Blocking queue interface.
+ *
+ * @param <T> Generic type.
+ */
 public interface MyBlockingQueue<T> {
     /**
      * Are there any element in the queue?
@@ -11,7 +16,7 @@ public interface MyBlockingQueue<T> {
     /**
      * Add an element to the queue.
      *
-     * @param element - Added element.
+     * @param element Added element.
      */
     void add(T element) throws InterruptedException;
 

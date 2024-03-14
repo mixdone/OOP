@@ -2,8 +2,22 @@ package queue;
 
 import java.util.ArrayDeque;
 
+/**
+ * Order queue by my blocking queue.
+ *
+ * @param <T> Generic type.
+ */
 public class OrderQueue<T> implements MyBlockingQueue<T>{
     private final ArrayDeque<T> deque = new ArrayDeque<>();
+
+    private boolean orderQueueClosed = false;
+
+    /**
+     * Orders closed.
+     */
+    public void setOrderQueueClosed() {
+        orderQueueClosed = true;
+    }
 
     /**
      * Are there any element in the queue?
@@ -20,7 +34,7 @@ public class OrderQueue<T> implements MyBlockingQueue<T>{
     /**
      * Add an element to the queue.
      *
-     * @param element - Added element.
+     * @param element Added element.
      */
     @Override
     public synchronized void add(T element) throws InterruptedException {
