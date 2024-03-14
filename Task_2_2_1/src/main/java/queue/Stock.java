@@ -34,9 +34,13 @@ public class Stock<T> implements MyBlockingQueue<T> {
      * @param element Added element.
      */
     @Override
-    public synchronized void add(T element) throws InterruptedException {
+    public synchronized void add(T element) {
         while (deque.size() >= this.size) {
-            wait();
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                add(element);
+            }
         }
         deque.addLast(element);
         notifyAll();
@@ -48,9 +52,13 @@ public class Stock<T> implements MyBlockingQueue<T> {
      * @return element.
      */
     @Override
-    public T get() throws InterruptedException {
+    public synchronized T get() {
         while (deque.isEmpty()) {
-            wait();
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                return null;
+            }
         }
 
         var object = deque.removeFirst();

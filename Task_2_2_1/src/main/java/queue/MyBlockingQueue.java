@@ -18,12 +18,12 @@ public interface MyBlockingQueue<T> {
      *
      * @param element Added element.
      */
-    void add(T element) throws InterruptedException;
+    void add(T element);
 
     /**
      * Takes an element out of the queue.
      *
      * @return element.
      */
-    T get() throws InterruptedException;
+    T get();
 }

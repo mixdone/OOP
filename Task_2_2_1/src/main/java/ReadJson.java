@@ -73,4 +73,15 @@ public class ReadJson {
         return JsonParser.parseReader(reader).getAsJsonObject().get("workday").getAsInt();
     }
 
+    /**
+     * Get stock size from json.
+     *
+     * @return stock int size.
+     */
+    public int getStockSize() {
+        return JsonParser.parseReader(reader).getAsJsonObject().get("stock").getAsInt();
+    }
+
+
+
 }

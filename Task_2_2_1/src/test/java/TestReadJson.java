@@ -29,6 +29,18 @@ public class TestReadJson {
             throw new RuntimeException(e);
         }
     }
+    @Test
+    public void testStockSize() {
+        try {
+            Reader reader = Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
+            ReadJson readJson = new ReadJson(reader);
+
+            Assertions.assertEquals(5, readJson.getStockSize());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @ParameterizedTest
     @MethodSource("getBakers")

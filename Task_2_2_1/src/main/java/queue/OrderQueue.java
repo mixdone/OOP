@@ -10,15 +10,6 @@ import java.util.ArrayDeque;
 public class OrderQueue<T> implements MyBlockingQueue<T>{
     private final ArrayDeque<T> deque = new ArrayDeque<>();
 
-    private boolean orderQueueClosed = false;
-
-    /**
-     * Orders closed.
-     */
-    public void setOrderQueueClosed() {
-        orderQueueClosed = true;
-    }
-
     /**
      * Are there any element in the queue?
      *
@@ -37,7 +28,7 @@ public class OrderQueue<T> implements MyBlockingQueue<T>{
      * @param element Added element.
      */
     @Override
-    public synchronized void add(T element) throws InterruptedException {
+    public synchronized void add(T element) {
         deque.addLast(element);
         notifyAll();
     }
@@ -48,9 +39,13 @@ public class OrderQueue<T> implements MyBlockingQueue<T>{
      * @return element.
      */
     @Override
-    public T get() throws InterruptedException {
+    public synchronized T get() {
         while (deque.isEmpty()) {
-            wait();
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                return null;
+            }
         }
 
         var object = deque.removeFirst();

@@ -72,32 +72,24 @@ public class Baker implements Runnable, Worker {
     @Override
     public void getOrder() {
         currentOrder = null;
-        try {
-            currentOrder = orders.get();
-            if (currentOrder.getStatus() == Status.DONE) {
-                workdayIsOver = true;
-                return;
-            }
-            currentOrder.setStatus(Status.COOCKING);
-            logger.log(Level.INFO, this.toString());
-            // Logging that baker move the order into status:COOKING
-        } catch (InterruptedException e) {
-            getOrder();
+        currentOrder = orders.get();
+        if (currentOrder.getStatus() == Status.DONE) {
+            workdayIsOver = true;
+            return;
         }
+        currentOrder.setStatus(Status.COOCKING);
+        logger.log(Level.INFO, this.toString());
+        // Logging that baker move the order into status:COOKING
     }
 
     /**
      * Worker stock the pizza.
      */
     public void stocking() {
-        try {
-            currentOrder.setStatus(Status.STOCK);
-            stock.add(currentOrder);
-            logger.log(Level.INFO, this.toString());
-            // Logging that baker move the order into status:STOCK
-        } catch (InterruptedException e) {
-            stocking();
-        }
+        currentOrder.setStatus(Status.STOCK);
+        stock.add(currentOrder);
+        logger.log(Level.INFO, this.toString());
+        // Logging that baker move the order into status:STOCK
     }
 
     /**
@@ -119,7 +111,7 @@ public class Baker implements Runnable, Worker {
      */
     @Override
     public String toString() {
-        return "Baker" + name + "move" + currentOrder.toString();
+        return "Baker" + name + " move " + currentOrder.toString();
     }
 
     /**
@@ -129,7 +121,6 @@ public class Baker implements Runnable, Worker {
     public void run() {
         while (true) {
             getOrder();
-
             if (workdayIsOver) {
                 break;
             }

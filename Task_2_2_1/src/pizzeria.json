@@ -1,5 +1,6 @@
 {
-  "workday" : 100000,
+  "workday" : 5000,
+  "stock" : 5,
   "bakers" : [
     {
       "name" : "Petya Vasichkin",
@@ -7,11 +8,11 @@
     },
     {
       "name" : "Ivan Frolov",
-      "time" : 2000
+      "time" : 500
     },
     {
       "name" : "Artem Kustov",
-      "time" : 1500
+      "time" : 800
     }
   ],
 

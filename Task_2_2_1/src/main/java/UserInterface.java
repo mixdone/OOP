@@ -1,13 +1,29 @@
-import java.util.Scanner;
 import order.PizzaOrder;
 import queue.OrderQueue;
+
+
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  * User interface.
  */
 public class UserInterface implements Runnable {
+    private static final Logger logger = Logger.getLogger(String.valueOf(UserInterface.class));
+
     private int currentOrderNumber = 0;
     private OrderQueue<PizzaOrder> orders;
+
+    /**
+     * Set order queue.
+     *
+     * @param orders Queue.
+     */
+    public void setOrders(OrderQueue<PizzaOrder> orders) {
+        this.orders = orders;
+    }
 
     /**
      * Get order.
@@ -15,9 +31,9 @@ public class UserInterface implements Runnable {
      * @return orders number.
      */
     public int getOrder() {
-        var stdin = new Scanner(System.in);
-        System.out.println("Enter number of pizza:");
-        return stdin.nextInt();
+        Random number = new Random();
+
+        return number.nextInt() % 12;
     }
 
     /**
@@ -33,12 +49,9 @@ public class UserInterface implements Runnable {
      * Put order in queue.
      */
     public void putOrder(PizzaOrder order) {
-        try {
-            orders.add(order);
-            // Logging that order move into status:QUEUE
-        } catch (InterruptedException e) {
-            putOrder(order);
-        }
+        orders.add(order);
+        logger.log(Level.INFO, order.toString());
+        // Logging that order move into status:QUEUE
     }
 
     /**
@@ -46,11 +59,17 @@ public class UserInterface implements Runnable {
      */
     @Override
     public void run() {
-        while(true) {
+        while(!Thread.currentThread().isInterrupted()) {
             var num = getOrder();
 
             for (int i = 0; i < num; i++) {
                 putOrder(generateOrder());
+            }
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                return;
             }
         }
     }

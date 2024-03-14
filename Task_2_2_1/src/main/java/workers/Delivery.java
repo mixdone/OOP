@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Delivery implements Runnable, Worker {
-    private static final Logger logger = Logger.getLogger(String.valueOf(Baker.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(Delivery.class));
 
     private final String name;
     private final int amount;
@@ -72,19 +72,15 @@ public class Delivery implements Runnable, Worker {
      */
     @Override
     public void getOrder() {
-        try {
-            var currentOrder = stock.get();
-            if (currentOrder.getStatus() == Status.DONE) {
-                workdayIsOver = true;
-                return;
-            }
-            currentOrder.setStatus(Status.DELIVERING);
-            trunk.add(currentOrder);
-            logger.log(Level.INFO, this.toString());
-            // Logging that deliveryman move the order into status:DELIVERING
-        } catch (InterruptedException e) {
-            getOrder();
+        var currentOrder = stock.get();
+        if (currentOrder.getStatus() == Status.DONE) {
+            workdayIsOver = true;
+            return;
         }
+        currentOrder.setStatus(Status.DELIVERING);
+        trunk.add(currentOrder);
+        logger.log(Level.INFO, this.toString());
+        // Logging that deliveryman move the order into status:DELIVERING
     }
 
     /**
@@ -95,9 +91,9 @@ public class Delivery implements Runnable, Worker {
         Random workingTime = new Random();
         try {
             for (var i: trunk) {
-                Thread.sleep(workingTime.nextInt() * 100L % 10000);
+                Thread.sleep(Math.abs(workingTime.nextInt() * 100L % 10000));
                 i.setStatus(Status.DONE);
-                logger.log(Level.INFO, "Deliveryman" + name + "move" + i);
+                logger.log(Level.INFO, "Deliveryman " + name + " move " + i);
                 // Logging that Deliveryman move the order into status:DONE
             }
         } catch (InterruptedException e) {
