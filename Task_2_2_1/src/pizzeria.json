@@ -1,5 +1,5 @@
 {
-  "workday" : 10000,
+  "workday" : 100000,
   "bakers" : [
     {
       "name" : "Petya Vasichkin",
@@ -23,6 +23,6 @@
     {
       "name" : "Sergey Suslov",
       "amount" : 2
-    },
+    }
   ]
 }

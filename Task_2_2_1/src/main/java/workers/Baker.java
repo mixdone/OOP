@@ -1,9 +1,11 @@
 package workers;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import order.PizzaOrder;
 import order.Status;
 import queue.OrderQueue;
 import queue.Stock;
+
 
 /**
  * workers.Baker. Has the speed of work.
@@ -12,6 +14,8 @@ import queue.Stock;
  * The baker is putting pizza in the stock.
  */
 public class Baker implements Runnable, Worker {
+    private static final Logger logger = Logger.getLogger(String.valueOf(Baker.class));
+
     private final String name;
     private final int time;
 
@@ -42,6 +46,16 @@ public class Baker implements Runnable, Worker {
     }
 
     /**
+     * Says current worker's name.
+     *
+     * @return String name.
+     */
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Stock for backer.
      *
      * @param stock Stock.
@@ -65,6 +79,7 @@ public class Baker implements Runnable, Worker {
                 return;
             }
             currentOrder.setStatus(Status.COOCKING);
+            logger.log(Level.INFO, this.toString());
             // Logging that baker move the order into status:COOKING
         } catch (InterruptedException e) {
             getOrder();
@@ -78,6 +93,7 @@ public class Baker implements Runnable, Worker {
         try {
             currentOrder.setStatus(Status.STOCK);
             stock.add(currentOrder);
+            logger.log(Level.INFO, this.toString());
             // Logging that baker move the order into status:STOCK
         } catch (InterruptedException e) {
             stocking();
@@ -103,7 +119,7 @@ public class Baker implements Runnable, Worker {
      */
     @Override
     public String toString() {
-        return "workers.Baker" + name + "move" + currentOrder.toString();
+        return "Baker" + name + "move" + currentOrder.toString();
     }
 
     /**

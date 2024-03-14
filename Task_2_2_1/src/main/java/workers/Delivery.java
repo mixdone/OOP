@@ -4,14 +4,19 @@ import order.PizzaOrder;
 import order.Status;
 import queue.Stock;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Delivery implements Runnable, Worker {
+    private static final Logger logger = Logger.getLogger(String.valueOf(Baker.class));
+
     private final String name;
     private final int amount;
     private Stock<PizzaOrder> stock;
     private boolean workdayIsOver = false;
-    private PizzaOrder currentOrder;
+    private final ArrayList<PizzaOrder> trunk;
 
     /**
      * Deliverymen constructor.
@@ -21,6 +26,7 @@ public class Delivery implements Runnable, Worker {
     public Delivery(String name, int amount) {
         this.name = name;
         this.amount = amount;
+        this.trunk = new ArrayList<>(amount);
     }
 
     /**
@@ -29,7 +35,9 @@ public class Delivery implements Runnable, Worker {
     @Override
     public void run() {
         while(true) {
-            getOrder();
+            for (int i = 0; i < amount; i++) {
+                getOrder();
+            }
 
             if (workdayIsOver) {
                 break;
@@ -37,6 +45,16 @@ public class Delivery implements Runnable, Worker {
 
             working();
         }
+    }
+
+    /**
+     * Says current worker's name.
+     *
+     * @return String name.
+     */
+    @Override
+    public String getName() {
+        return name;
     }
 
     /**
@@ -55,12 +73,14 @@ public class Delivery implements Runnable, Worker {
     @Override
     public void getOrder() {
         try {
-            currentOrder = stock.get();
+            var currentOrder = stock.get();
             if (currentOrder.getStatus() == Status.DONE) {
                 workdayIsOver = true;
                 return;
             }
             currentOrder.setStatus(Status.DELIVERING);
+            trunk.add(currentOrder);
+            logger.log(Level.INFO, this.toString());
             // Logging that deliveryman move the order into status:DELIVERING
         } catch (InterruptedException e) {
             getOrder();
@@ -74,9 +94,12 @@ public class Delivery implements Runnable, Worker {
     public void working() {
         Random workingTime = new Random();
         try {
-            Thread.sleep(workingTime.nextInt() * 100L % 10000);
-            currentOrder.setStatus(Status.DONE);
-            // Logging that Deliveryman move the order into status:DONE
+            for (var i: trunk) {
+                Thread.sleep(workingTime.nextInt() * 100L % 10000);
+                i.setStatus(Status.DONE);
+                logger.log(Level.INFO, "Deliveryman" + name + "move" + i);
+                // Logging that Deliveryman move the order into status:DONE
+            }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
