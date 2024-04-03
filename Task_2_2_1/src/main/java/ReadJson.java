@@ -26,8 +26,8 @@ public class ReadJson {
      */
     public ArrayList<Baker> getBakers() {
 
-        var bakersArray = JsonParser.parseReader(reader).
-                getAsJsonObject().get("bakers").getAsJsonArray();
+        var bakersArray = JsonParser.parseReader(reader)
+                .getAsJsonObject().get("bakers").getAsJsonArray();
 
         var bakers = new ArrayList<Baker>();
 
@@ -49,8 +49,8 @@ public class ReadJson {
      * @return deliverymen.
      */
     public ArrayList<Delivery> getDelivery() {
-        var deliveryArray = JsonParser.parseReader(reader).
-                getAsJsonObject().get("delivery").getAsJsonArray();
+        var deliveryArray = JsonParser.parseReader(reader)
+                .getAsJsonObject().get("delivery").getAsJsonArray();
         var delivery = new ArrayList<Delivery>();
 
         for (var i: deliveryArray) {

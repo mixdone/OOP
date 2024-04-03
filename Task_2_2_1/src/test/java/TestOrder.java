@@ -18,6 +18,13 @@ public class TestOrder {
         Assertions.assertEquals("the order 0 is into status:QUEUE", order.toString());
     }
 
+    /**
+     * Test set status.
+     *
+     * @param expected expected answer.
+     * @param i order number.
+     * @param status order status.
+     */
     @ParameterizedTest
     @MethodSource("getTestsSetStatus")
     public void testSetStatus(String expected, int i, Status status) {

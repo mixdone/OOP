@@ -18,6 +18,10 @@ import queue.Stock;
  */
 public class Init {
     public void init() {
+
+        /**
+         * Init.
+         */
         try {
             Path path = Path.of("src/pizzeria.json");
             var reader      = Files.newBufferedReader(path, StandardCharsets.UTF_8);

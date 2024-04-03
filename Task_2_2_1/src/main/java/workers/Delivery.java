@@ -9,7 +9,7 @@ import order.Status;
 import queue.Stock;
 
 /**
- * Delivery
+ * Delivery.
  */
 public class Delivery implements Runnable, Worker {
     private static final Logger logger = Logger.getLogger(String.valueOf(Delivery.class));
