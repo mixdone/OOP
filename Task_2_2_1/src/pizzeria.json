@@ -1,0 +1,29 @@
+{
+  "workday" : 5000,
+  "stock" : 5,
+  "bakers" : [
+    {
+      "name" : "Petya Vasichkin",
+      "time" : 1000
+    },
+    {
+      "name" : "Ivan Frolov",
+      "time" : 500
+    },
+    {
+      "name" : "Artem Kustov",
+      "time" : 800
+    }
+  ],
+
+  "delivery" : [
+    {
+      "name" : "Ivan Korsov",
+      "amount" : 3
+    },
+    {
+      "name" : "Sergey Suslov",
+      "amount" : 2
+    }
+  ]
+}
