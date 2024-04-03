@@ -1,14 +1,16 @@
 package workers;
 
-import order.PizzaOrder;
-import order.Status;
-import queue.Stock;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import order.PizzaOrder;
+import order.Status;
+import queue.Stock;
 
+/**
+ * Delivery
+ */
 public class Delivery implements Runnable, Worker {
     private static final Logger logger = Logger.getLogger(String.valueOf(Delivery.class));
 
@@ -34,7 +36,7 @@ public class Delivery implements Runnable, Worker {
      */
     @Override
     public void run() {
-        while(true) {
+        while (true) {
             for (int i = 0; i < amount; i++) {
                 getOrder();
             }
@@ -90,7 +92,7 @@ public class Delivery implements Runnable, Worker {
     public void working() {
         Random workingTime = new Random();
         try {
-            for (var i: trunk) {
+            for (var i : trunk) {
                 Thread.sleep(Math.abs(workingTime.nextInt() * 100L % 10000));
                 i.setStatus(Status.DONE);
                 logger.log(Level.INFO, "Deliveryman " + name + " move " + i);

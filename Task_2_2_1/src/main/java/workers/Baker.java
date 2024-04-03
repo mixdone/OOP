@@ -1,4 +1,5 @@
 package workers;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import order.PizzaOrder;
@@ -8,7 +9,7 @@ import queue.Stock;
 
 
 /**
- * workers.Baker. Has the speed of work.
+ * Baker. Has the speed of work.
  * Takes orders to make pizzas. Reports that he has taken the order.
  * Falls asleep while working (making pizza).
  * The baker is putting pizza in the stock.

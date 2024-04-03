@@ -20,7 +20,8 @@ public class TestReadJson {
     @Test
     public void testWorkDay() {
         try {
-            Reader reader = Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
+            Reader reader =
+                    Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
             ReadJson readJson = new ReadJson(reader);
 
             Assertions.assertEquals(5000, readJson.getWorkingDay());
@@ -29,10 +30,12 @@ public class TestReadJson {
             throw new RuntimeException(e);
         }
     }
+
     @Test
     public void testStockSize() {
         try {
-            Reader reader = Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
+            Reader reader =
+                    Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
             ReadJson readJson = new ReadJson(reader);
 
             Assertions.assertEquals(5, readJson.getStockSize());
@@ -56,7 +59,8 @@ public class TestReadJson {
 
     static Stream<Arguments> getBakers() {
         try {
-            Reader reader = Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
+            Reader reader =
+                    Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
             ReadJson readJson = new ReadJson(reader);
 
             var bakers = readJson.getBakers();
@@ -72,7 +76,8 @@ public class TestReadJson {
 
     static Stream<Arguments> getDelivery() {
         try {
-            Reader reader = Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
+            Reader reader =
+                    Files.newBufferedReader(Path.of("src/pizzeria.json"), StandardCharsets.UTF_8);
             ReadJson readJson = new ReadJson(reader);
 
             var delivery = readJson.getDelivery();

@@ -1,11 +1,8 @@
-import order.PizzaOrder;
-import queue.OrderQueue;
-
-
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import order.PizzaOrder;
+import queue.OrderQueue;
 
 /**
  * User interface.
@@ -59,7 +56,7 @@ public class UserInterface implements Runnable {
      */
     @Override
     public void run() {
-        while(!Thread.currentThread().isInterrupted()) {
+        while (!Thread.currentThread().isInterrupted()) {
             var num = getOrder();
 
             for (int i = 0; i < num; i++) {
