@@ -17,11 +17,11 @@ import queue.Stock;
  *      3) Wait for the delivery men.
  */
 public class Init {
-    public void init() {
 
-        /**
-         * Init.
-         */
+    /**
+     * Init.
+     */
+    public void init() {
         try {
             Path path = Path.of("src/pizzeria.json");
             var reader      = Files.newBufferedReader(path, StandardCharsets.UTF_8);

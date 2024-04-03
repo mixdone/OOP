@@ -93,7 +93,7 @@ public class Delivery implements Runnable, Worker {
         Random workingTime = new Random();
         try {
             for (var i : trunk) {
-                Thread.sleep(Math.abs(workingTime.nextInt() * 100L % 10000));
+                Thread.sleep(Math.abs(workingTime.nextInt() * 100L % 1000));
                 i.setStatus(Status.DONE);
                 logger.log(Level.INFO, "Deliveryman " + name + " move " + i);
                 // Logging that Deliveryman move the order into status:DONE
