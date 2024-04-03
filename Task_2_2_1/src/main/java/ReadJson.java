@@ -31,7 +31,7 @@ public class ReadJson {
 
         var bakers = new ArrayList<Baker>();
 
-        for (var i: bakersArray) {
+        for (var i : bakersArray) {
             if (i.isJsonObject()) {
                 var name = i.getAsJsonObject().get("name").getAsString();
                 var time = i.getAsJsonObject().get("time").getAsInt();
@@ -53,7 +53,7 @@ public class ReadJson {
                 .getAsJsonObject().get("delivery").getAsJsonArray();
         var delivery = new ArrayList<Delivery>();
 
-        for (var i: deliveryArray) {
+        for (var i : deliveryArray) {
             if (i.isJsonObject()) {
                 var name    = i.getAsJsonObject().get("name").getAsString();
                 var amount  = i.getAsJsonObject().get("amount").getAsInt();

@@ -49,12 +49,12 @@ public class Init {
             var uiThread        = new Thread(uInterface);
 
 
-            for (var i: bakers) {
+            for (var i : bakers) {
                 i.setOrders(orders);
                 i.setStock(stock);
             }
 
-            for (var i: delivery) {
+            for (var i : delivery) {
                 i.setStock(stock);
             }
 
@@ -62,13 +62,13 @@ public class Init {
 
             uiThread.start();
 
-            for (var i: bakers) {
+            for (var i : bakers) {
                 var newThread = new Thread(i);
                 newThread.start();
                 bakersThreads.add(newThread);
             }
 
-            for (var i: delivery) {
+            for (var i : delivery) {
                 var newThread = new Thread(i);
                 newThread.start();
                 deliveryThreads.add(newThread);
@@ -88,7 +88,7 @@ public class Init {
                 orders.add(finishOrder);
             }
 
-            for (var i: bakersThreads) {
+            for (var i : bakersThreads) {
                 i.join();
             }
 
@@ -99,7 +99,7 @@ public class Init {
                 stock.add(finishOrder);
             }
 
-            for (var i: deliveryThreads) {
+            for (var i : deliveryThreads) {
                 i.join();
             }
 

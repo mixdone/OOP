@@ -3,6 +3,9 @@ package workers;
 import order.PizzaOrder;
 import queue.Stock;
 
+/**
+ * Worker interface.
+ */
 public interface Worker {
 
     /**
