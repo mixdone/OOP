@@ -1,13 +1,12 @@
-import order.PizzaOrder;
-import order.Status;
-import queue.OrderQueue;
-import queue.Stock;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import order.PizzaOrder;
+import order.Status;
+import queue.OrderQueue;
+import queue.Stock;
 
 /**
  * Initialises the whole system according to the data received from json.

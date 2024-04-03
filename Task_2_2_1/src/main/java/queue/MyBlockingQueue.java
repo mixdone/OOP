@@ -6,8 +6,9 @@ package queue;
  * @param <T> Generic type.
  */
 public interface MyBlockingQueue<T> {
+
     /**
-     * Are there any element in the queue?
+     * Are there any element in the queue.
      *
      * @return boolean
      */

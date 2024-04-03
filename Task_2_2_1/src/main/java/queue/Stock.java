@@ -17,7 +17,7 @@ public class Stock<T> implements MyBlockingQueue<T> {
     }
 
     /**
-     * Are there any element in the queue?
+     * Are there any element in the queue.
      *
      * @return boolean
      */

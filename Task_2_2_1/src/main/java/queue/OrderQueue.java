@@ -7,11 +7,11 @@ import java.util.ArrayDeque;
  *
  * @param <T> Generic type.
  */
-public class OrderQueue<T> implements MyBlockingQueue<T>{
+public class OrderQueue<T> implements MyBlockingQueue<T> {
     private final ArrayDeque<T> deque = new ArrayDeque<>();
 
     /**
-     * Are there any element in the queue?
+     * Are there any element in the queue.
      *
      * @return boolean
      */
