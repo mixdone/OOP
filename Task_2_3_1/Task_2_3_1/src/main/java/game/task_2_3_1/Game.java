@@ -10,10 +10,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import javafx.stage.WindowEvent;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static java.lang.System.exit;
 
 /**
  * Game class.
@@ -28,7 +31,7 @@ public class Game implements Runnable {
     private Thread game;
     private Thread food;
 
-    private final long speedUpdate          = 300;
+    private final long speedUpdate          = 250;
     private final Random random             = new Random();
     private final AtomicBoolean gameOver    = new AtomicBoolean(false);
     private final AtomicBoolean win         = new AtomicBoolean(false);
@@ -65,6 +68,8 @@ public class Game implements Runnable {
                 }
             }
         }
+
+
     }
 
 
@@ -85,6 +90,12 @@ public class Game implements Runnable {
 
         var scene = new Scene(root);
         scene.setOnKeyPressed(new KeyStoneHandler());
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                System.exit(0);
+            }
+        });
         stage.setScene(scene);
 
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
@@ -115,6 +126,7 @@ public class Game implements Runnable {
                     diff = snake.getLenght() * 10;
                 }
             }
+
         });
 
         /*
@@ -123,7 +135,7 @@ public class Game implements Runnable {
         food = new Thread(() -> {
             while (!gameOver.get() && !Thread.currentThread().isInterrupted()) {
                 if (eat.get() > 0) {
-                    eat.set(eat.get() - 1);
+
                     var x = Math.abs(random.nextInt()) % 50;
                     var y = Math.abs(random.nextInt()) % 50;
 
@@ -135,7 +147,13 @@ public class Game implements Runnable {
                     var f = new Cell(x, y, CellType.FOOD);
 
                     field.setCell(f);
-                    drawer.drawFood(f);
+                    try {
+                        drawer.drawFood(f);
+                    } catch (InternalError e) {
+                        drawer.drawField();
+                        continue;
+                    }
+                    eat.set(eat.get() - 1);
                 }
             }
         });
@@ -163,9 +181,14 @@ public class Game implements Runnable {
         if (snake.getLenght() > length) {
             eat.set(eat.get() + 1);
         }
-
-        drawer.drawGrass(snake.getChangedCell());
-        drawer.drawSnake(snake.getHead());
+        try {
+            drawer.drawGrass(snake.getChangedCell());
+            drawer.drawSnake(snake.getHead());
+        } catch (InternalError e) {
+            drawer.drawField();
+            drawer.drawGrass(snake.getChangedCell());
+            drawer.drawSnake(snake.getHead());
+        }
     }
 
 }
