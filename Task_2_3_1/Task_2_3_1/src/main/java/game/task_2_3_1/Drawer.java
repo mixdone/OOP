@@ -45,7 +45,7 @@ public class Drawer {
      *
      * @param grass necessary cell.
      */
-    public void drawGrass(Cell grass) {
+    public synchronized void drawGrass(Cell grass) {
 
         if (grass == null) {
             return;
@@ -59,6 +59,8 @@ public class Drawer {
         graphicsContext.fillRect(grass.getX() * settings.getCellSize(),
                 grass.getY() * settings.getCellSize(),
                 settings.getCellSize(), settings.getCellSize());
+
+        notifyAll();
     }
 
     /**
@@ -66,11 +68,13 @@ public class Drawer {
      *
      * @param snake necessary cell.
      */
-    public void drawSnake(Cell snake) {
+    public synchronized void drawSnake(Cell snake) {
         graphicsContext.setFill(Color.web("C71585"));
         graphicsContext.fillRoundRect(snake.getX() * settings.getCellSize(),
                 snake.getY() * settings.getCellSize(),
                 settings.getCellSize(), settings.getCellSize(), 20, 20);
+
+        notifyAll();
     }
 
     /**
@@ -78,10 +82,11 @@ public class Drawer {
      *
      * @param food necessary cell.
      */
-    public void drawFood(Cell food) {
+    public synchronized void drawFood(Cell food) {
         graphicsContext.setFill(Color.web("FFDAB9"));
         graphicsContext.fillRoundRect(food.getX() * settings.getCellSize(),
                 food.getY() * settings.getCellSize(),
                 settings.getCellSize(), settings.getCellSize(), 20, 20);
+        notifyAll();
     }
 }
