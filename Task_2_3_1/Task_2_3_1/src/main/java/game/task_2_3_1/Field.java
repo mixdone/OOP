@@ -1,7 +1,6 @@
 package game.task_2_3_1;
 
 import game.task_2_3_1.enums.CellType;
-
 import java.util.Random;
 
 /**

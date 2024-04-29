@@ -1,5 +1,8 @@
 package game.task_2_3_1;
 
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import game.task_2_3_1.enums.CellType;
 import game.task_2_3_1.enums.Direction;
 import javafx.event.EventHandler;
@@ -10,13 +13,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
-import javafx.stage.WindowEvent;
-
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import static java.lang.System.exit;
 
 /**
  * Game class.
@@ -34,7 +30,6 @@ public class Game implements Runnable {
     private final long speedUpdate          = 250;
     private final Random random             = new Random();
     private final AtomicBoolean gameOver    = new AtomicBoolean(false);
-    private final AtomicBoolean win         = new AtomicBoolean(false);
     private final AtomicInteger eat         = new AtomicInteger(0);
 
     /**
@@ -90,12 +85,7 @@ public class Game implements Runnable {
 
         var scene = new Scene(root);
         scene.setOnKeyPressed(new KeyStoneHandler());
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
-                System.exit(0);
-            }
-        });
+        stage.setOnCloseRequest(t -> System.exit(0));
         stage.setScene(scene);
 
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
@@ -171,7 +161,6 @@ public class Game implements Runnable {
 
         if (length == settings.getMaxSize()) {
             gameOver.set(true);
-            win.set(true);
         }
 
         if (!snake.nextState()) {
