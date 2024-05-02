@@ -18,23 +18,9 @@ ext {
   junitVersion = '5.10.0'
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
   options.encoding = 'UTF-8'
 }
-
-sourceCompatibility = '20'
-targetCompatibility = '20'
-
-tasks.withType(JavaCompile) {
-  options.encoding = 'UTF-8'
-}
-
-java {
-  toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
-  }
-}
-
 
 application {
   mainModule = 'game.task'
@@ -67,10 +53,8 @@ jlinkZip {
   group = 'distribution'
 }
 
-tasks.jacocoTestReport {
+jacocoTestReport {
   reports {
-    xml.required.set(true)
-    html.required.set(true)
-    html.outputLocation.set(layout.buildDirectory.dir("$buildDir/jacoco/jacocoHtml"))
+    xml.required = true
   }
 }
