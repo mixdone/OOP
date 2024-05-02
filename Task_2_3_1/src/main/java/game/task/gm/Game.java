@@ -132,7 +132,7 @@ public class Game implements Runnable {
                     var x = Math.abs(random.nextInt()) % 50;
                     var y = Math.abs(random.nextInt()) % 50;
 
-                    while(field.getCell(x, y) != CellType.GRASS) {
+                    while (field.getCell(x, y) != CellType.GRASS) {
                         x = Math.abs(random.nextInt()) % 50;
                         y = Math.abs(random.nextInt()) % 50;
                     }
