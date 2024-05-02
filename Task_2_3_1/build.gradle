@@ -18,6 +18,10 @@ ext {
   junitVersion = '5.10.0'
 }
 
+tasks.withType(JavaCompile) {
+  options.encoding = 'UTF-8'
+}
+
 sourceCompatibility = '20'
 targetCompatibility = '20'
 
