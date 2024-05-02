@@ -1,4 +1,4 @@
-package game.task.game;
+package game.task.gm;
 
 import game.task.enums.CellType;
 import game.task.enums.Direction;

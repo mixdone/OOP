@@ -5,6 +5,6 @@ module game.task {
 
     opens game.task to javafx.fxml;
     exports game.task;
-    exports game.task.game;
-    opens game.task.game to javafx.fxml;
+    exports game.task.gm;
+    opens game.task.gm to javafx.fxml;
 }

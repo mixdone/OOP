@@ -7,6 +7,13 @@
     <list default="true" id="c9b7e2a6-3c47-4cd3-a17f-d4888b041b55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/task/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/task/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/task/Drawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/task/Drawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/task/game/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/task/gm/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/task/game/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/task/gm/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/task/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/task/gm/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/task/game/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/task/gm/Snake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/game/task/CellTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/game/task/CellTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

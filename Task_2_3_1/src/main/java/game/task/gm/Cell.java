@@ -1,4 +1,4 @@
-package game.task.game;
+package game.task.gm;
 
 import game.task.enums.CellType;
 
@@ -6,13 +6,20 @@ import game.task.enums.CellType;
  * Class cell.
  */
 public class Cell {
-    private final int x;
-    private final int y;
+    private final int xCoord;
+    private final int yCoord;
     private CellType type;
 
+    /**
+     * Constructor.
+     *
+     * @param x x coord.
+     * @param y y coord
+     * @param type cell type.
+     */
     public Cell(int x, int y, CellType type) {
-        this.x      = x;
-        this.y      = y;
+        this.xCoord = x;
+        this.yCoord = y;
         this.type   = type;
     }
 
@@ -40,7 +47,7 @@ public class Cell {
      * @return coord.
      */
     public int getX() {
-        return x;
+        return xCoord;
     }
 
     /**
@@ -49,7 +56,7 @@ public class Cell {
      * @return coord.
      */
     public int getY() {
-        return y;
+        return yCoord;
     }
 
 }

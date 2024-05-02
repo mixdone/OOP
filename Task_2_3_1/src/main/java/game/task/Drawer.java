@@ -1,8 +1,8 @@
 package game.task;
 
 import game.task.enums.CellType;
-import game.task.game.Cell;
-import game.task.game.Field;
+import game.task.gm.Cell;
+import game.task.gm.Field;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 

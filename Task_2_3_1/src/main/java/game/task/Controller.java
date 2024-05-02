@@ -1,6 +1,6 @@
 package game.task;
 
-import game.task.game.Game;
+import game.task.gm.Game;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,7 +39,7 @@ public class Controller {
      *
      */
     public void onPlay(ActionEvent event) throws IOException {
-        var stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        var stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         var game = new Game(stage, settings1);
         game.run();
     }
@@ -52,7 +52,7 @@ public class Controller {
      * @throws IOException exception.
      */
     public void onSettings(ActionEvent event) throws IOException {
-        var stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        var stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(
                 Controller.class.getResource("settings.fxml"));
         AnchorPane root = fxmlLoader.load();
@@ -69,7 +69,7 @@ public class Controller {
     public void onPlaySettings(ActionEvent event) throws IOException {
         settings1.setAmountOfFood((int) amountOfFood.getValue());
         settings1.setMaxSize((int) maxSize.getValue());
-        var stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        var stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         var game = new Game(stage, settings1);
         game.run();
