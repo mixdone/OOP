@@ -30,10 +30,12 @@ public class Game implements Runnable {
     private Thread game;
     private Thread food;
 
-    private final long speedUpdate          = 250;
-    private final Random random             = new Random();
-    private final AtomicBoolean gameOver    = new AtomicBoolean(false);
-    private final AtomicInteger eat         = new AtomicInteger(0);
+    private final Random random          = new Random();
+    private final AtomicBoolean gameOver = new AtomicBoolean(false);
+    private final AtomicInteger eat      = new AtomicInteger(0);
+
+    private boolean win = false;
+    private final long speedUpdate = 250;
 
     /**
      * Keyboard action handler.
@@ -119,7 +121,7 @@ public class Game implements Runnable {
                     diff = snake.getLenght() * 10;
                 }
             }
-
+            drawer.drawGameOver(win);
         });
 
         /*
@@ -164,6 +166,7 @@ public class Game implements Runnable {
 
         if (length == settings.getMaxSize()) {
             gameOver.set(true);
+            win = true;
         }
 
         if (!snake.nextState()) {

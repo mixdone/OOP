@@ -3,8 +3,10 @@ package game.task;
 import game.task.enums.CellType;
 import game.task.gm.Cell;
 import game.task.gm.Field;
+import game.task.gm.Game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * Class drawer.
@@ -90,5 +92,17 @@ public class Drawer {
                 food.getY() * settings.getCellSize(),
                 settings.getCellSize(), settings.getCellSize(), 20, 20);
         notifyAll();
+    }
+
+    public void drawGameOver(boolean win) {
+        if (win) {
+            graphicsContext.setFill(Color.YELLOWGREEN);
+            graphicsContext.setFont(new Font("Digital-7", 90));
+            graphicsContext.fillText("YOU WIN", 250, 500);
+        } else {
+            graphicsContext.setFill(Color.RED);
+            graphicsContext.setFont(new Font("Digital-7", 90));
+            graphicsContext.fillText("YOU LOSE", 250, 500);
+        }
     }
 }
