@@ -1,5 +1,6 @@
 plugins {
   id 'java'
+  id 'jacoco'
   id 'application'
   id 'org.javamodularity.moduleplugin' version '1.8.12'
   id 'org.openjfx.javafxplugin' version '0.0.13'
@@ -53,4 +54,12 @@ jlink {
 
 jlinkZip {
   group = 'distribution'
+}
+
+tasks.jacocoTestReport {
+  reports {
+    xml.required.set(true)
+    html.required.set(true)
+    html.outputLocation.set(layout.buildDirectory.dir("$buildDir/jacoco/jacocoHtml"))
+  }
 }
