@@ -1,6 +1,8 @@
-package game.task_2_3_1;
+package game.task;
 
 import java.io.IOException;
+
+import game.task.game.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

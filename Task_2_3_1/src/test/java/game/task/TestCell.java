@@ -1,6 +1,7 @@
-package game.task_2_3_1;
+package game.task;
 
-import game.task_2_3_1.enums.CellType;
+import game.task.enums.CellType;
+import game.task.game.Cell;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

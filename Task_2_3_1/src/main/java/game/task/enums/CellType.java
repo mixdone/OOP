@@ -1,4 +1,4 @@
-package game.task_2_3_1.enums;
+package game.task.enums;
 
 /**
  * Cell types.

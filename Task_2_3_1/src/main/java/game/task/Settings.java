@@ -1,4 +1,4 @@
-package game.task_2_3_1;
+package game.task;
 
 /**
  * Custom settings.

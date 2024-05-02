@@ -1,6 +1,9 @@
-package game.task_2_3_1;
+package game.task;
 
-import game.task_2_3_1.enums.CellType;
+
+import game.task.enums.CellType;
+import game.task.game.Cell;
+import game.task.game.Field;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 

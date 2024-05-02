@@ -1,6 +1,6 @@
-package game.task_2_3_1;
+package game.task.game;
 
-import game.task_2_3_1.enums.CellType;
+import game.task.enums.CellType;
 
 /**
  * Class cell.

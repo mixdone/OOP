@@ -1,8 +1,10 @@
-module game.task_2_3_1 {
+module game.task {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens game.task_2_3_1 to javafx.fxml;
-    exports game.task_2_3_1;
+    opens game.task to javafx.fxml;
+    exports game.task;
+    exports game.task.game;
+    opens game.task.game to javafx.fxml;
 }

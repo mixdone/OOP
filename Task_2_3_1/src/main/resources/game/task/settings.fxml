@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="434.0" prefWidth="676.0" style="-fx-background-color: green;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.task.Controller">
+    <Slider layoutX="299.0" layoutY="132.0" majorTickUnit="2.0" max="15.0" min="1.0" minorTickCount="1" prefHeight="38.0"
+            prefWidth="223.0" showTickLabels="true" showTickMarks="true" fx:id="amountOfFood">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Slider>
+    <Slider layoutX="299.0" layoutY="262.0" majorTickUnit="10.0" min="10.0" minorTickCount="4" prefHeight="38.0"
+            prefWidth="223.0" showTickLabels="true" showTickMarks="true" fx:id="maxSize">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Slider>
+    <Text layoutX="280.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of food"
+          textAlignment="CENTER" wrappingWidth="261.0">
+        <font>
+            <Font size="31.0"/>
+        </font>
+        <fill>
+            <RadialGradient centerX="0.5166666666666668" centerY="0.5" focusDistance="-1.0">
+                <stops>
+                    <Stop>
+                        <color>
+                            <Color/>
+                        </color>
+                    </Stop>
+                    <Stop offset="1.0">
+                        <color>
+                            <Color red="0.5137255191802979" green="0.4901960790157318" blue="0.4901960790157318"/>
+                        </color>
+                    </Stop>
+                </stops>
+            </RadialGradient>
+        </fill>
+    </Text>
+    <Text layoutX="293.0" layoutY="233.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Max snake size"
+          textAlignment="CENTER">
+        <font>
+            <Font size="31.0"/>
+        </font>
+        <fill>
+            <RadialGradient centerX="0.5166666666666668" centerY="0.5" focusDistance="-1.0">
+                <stops>
+                    <Stop>
+                        <color>
+                            <Color/>
+                        </color>
+                    </Stop>
+                    <Stop offset="1.0">
+                        <color>
+                            <Color red="0.5137255191802979" green="0.4901960790157318" blue="0.4901960790157318"/>
+                        </color>
+                    </Stop>
+                </stops>
+            </RadialGradient>
+        </fill>
+    </Text>
+    <QuadCurve controlX="-19.0" controlY="-120.0" endX="13.0" fill="#93da4c" layoutX="100.0" layoutY="140.0"
+               startX="-50.0" stroke="#ddfcd3" strokeType="INSIDE" strokeWidth="0.0"/>
+    <QuadCurve controlX="-2.0" controlY="121.0" endX="50.0" endY="-11.0" fill="#e9fca7" layoutX="104.0" layoutY="151.0"
+               startX="-54.0" startY="-11.0" stroke="BLACK" strokeType="INSIDE"/>
+    <QuadCurve controlX="-19.0" controlY="-120.0" endX="13.0" fill="#93da4c" layoutX="141.0" layoutY="140.0"
+               startX="-50.0" stroke="#ddfcd3" strokeType="INSIDE" strokeWidth="0.0"/>
+    <QuadCurve controlX="-9.0" controlY="-35.0" endX="1.0" endY="-10.0" fill="#e9fca7" layoutX="113.0" layoutY="150.0"
+               startX="-20.0" startY="-10.0" stroke="BLACK" strokeType="INSIDE"/>
+    <QuadCurve controlX="83.0" controlY="-74.0" endX="6.0" endY="10.0" fill="#e9fca7" layoutX="132.0" layoutY="165.0"
+               startX="-19.0" startY="-24.0" stroke="BLACK" strokeType="INSIDE"
+               AnchorPane.topAnchor="122.3432846069336"/>
+    <QuadCurve controlX="-102.0" controlY="-65.0" endX="-28.0" endY="16.0" fill="#e9fca7" layoutX="95.0" layoutY="160.0"
+               startX="-2.0" startY="-20.0" stroke="BLACK" strokeType="INSIDE"/>
+    <Ellipse fill="WHITE" layoutX="82.0" layoutY="110.0" radiusX="15.0" radiusY="18.0" stroke="BLACK"
+             strokeType="INSIDE"/>
+    <Ellipse fill="WHITE" layoutX="123.0" layoutY="110.0" radiusX="15.0" radiusY="18.0" stroke="BLACK"
+             strokeType="INSIDE"/>
+    <Circle fill="DODGERBLUE" layoutX="82.0" layoutY="110.0" radius="7.0" stroke="BLACK" strokeType="INSIDE"/>
+    <Circle fill="DODGERBLUE" layoutX="123.0" layoutY="110.0" radius="7.0" stroke="BLACK" strokeType="INSIDE"/>
+    <CubicCurve controlX1="-87.0" controlX2="-73.0" controlY1="-59.0" controlY2="51.0" endX="-94.0" endY="-2.0"
+                fill="#ff231f" layoutX="216.0" layoutY="205.0" rotate="-51.3" startX="-105.0" startY="13.0"
+                stroke="BLACK" strokeWidth="0.0"/>
+    <Ellipse fill="#326114" layoutX="91.0" layoutY="160.0" radiusX="7.0" radiusY="6.0" rotate="41.6" stroke="BLACK"
+             strokeType="INSIDE"/>
+    <Ellipse fill="#326114" layoutX="114.0" layoutY="160.0" radiusX="7.0" radiusY="6.0" rotate="-45.0" stroke="BLACK"
+             strokeType="INSIDE"/>
+    <Text layoutX="22.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER">
+        <font>
+            <Font size="40.0"/>
+        </font>
+        <fill>
+            <LinearGradient cycleMethod="REPEAT" startX="0.004761904761904766">
+                <stops>
+                    <Stop>
+                        <color>
+                            <Color/>
+                        </color>
+                    </Stop>
+                    <Stop offset="1.0">
+                        <color>
+                            <Color red="1.0"/>
+                        </color>
+                    </Stop>
+                </stops>
+            </LinearGradient>
+        </fill>
+    </Text>
+    <Button layoutX="48.0" layoutY="329.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="111.0" text="Play" fx:id="play" onAction="#onPlaySettings">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Button>
+</AnchorPane>
