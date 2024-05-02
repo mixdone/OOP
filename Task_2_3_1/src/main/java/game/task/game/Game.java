@@ -1,13 +1,12 @@
 package game.task.game;
 
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import game.task.Drawer;
 import game.task.Settings;
 import game.task.enums.CellType;
 import game.task.enums.Direction;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;

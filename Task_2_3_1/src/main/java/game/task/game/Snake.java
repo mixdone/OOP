@@ -2,7 +2,6 @@ package game.task.game;
 
 import game.task.enums.CellType;
 import game.task.enums.Direction;
-
 import java.util.LinkedList;
 
 /**

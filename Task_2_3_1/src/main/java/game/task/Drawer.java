@@ -1,6 +1,5 @@
 package game.task;
 
-
 import game.task.enums.CellType;
 import game.task.game.Cell;
 import game.task.game.Field;
