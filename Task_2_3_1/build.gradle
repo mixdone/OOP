@@ -31,7 +31,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'game.task'
-  mainClass = 'game.task.HelloApplication'
+  mainClass = 'game.task.Main'
 }
 
 javafx {
