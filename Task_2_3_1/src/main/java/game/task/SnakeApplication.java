@@ -2,7 +2,6 @@ package game.task;
 
 import java.io.IOException;
 
-import game.task.gm.Snake;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
