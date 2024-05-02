@@ -18,6 +18,12 @@ ext {
   junitVersion = '5.10.0'
 }
 
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(20)
+  }
+}
+
 tasks.withType(JavaCompile).configureEach {
   options.encoding = 'UTF-8'
 }
