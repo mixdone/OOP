@@ -17,8 +17,7 @@ import javafx.stage.Stage;
  */
 public class Controller {
 
-
-    Settings s = new Settings();
+    Settings settings1 = new Settings();
 
     @FXML
     private Button play;
@@ -39,9 +38,9 @@ public class Controller {
      * @param event event.
      *
      */
-    public void onPlay(ActionEvent event) throws IOException{
-        var stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        var game = new Game(stage, s);
+    public void onPlay(ActionEvent event) throws IOException {
+        var stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        var game = new Game(stage, settings1);
         game.run();
     }
 
@@ -53,7 +52,7 @@ public class Controller {
      * @throws IOException exception.
      */
     public void onSettings(ActionEvent event) throws IOException {
-        var stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        var stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(
                 Controller.class.getResource("settings.fxml"));
         AnchorPane root = fxmlLoader.load();
@@ -68,11 +67,11 @@ public class Controller {
      * @param event event.
      */
     public void onPlaySettings(ActionEvent event) throws IOException {
-        s.setAmountOfFood((int)amountOfFood.getValue());
-        s.setMaxSize((int)maxSize.getValue());
-        var stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        settings1.setAmountOfFood((int) amountOfFood.getValue());
+        settings1.setMaxSize((int) maxSize.getValue());
+        var stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-        var game = new Game(stage, s);
+        var game = new Game(stage, settings1);
         game.run();
     }
 
