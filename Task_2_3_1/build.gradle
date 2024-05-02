@@ -33,7 +33,7 @@ java {
 
 application {
   mainModule = 'game.task'
-  mainClass = 'game.task.HelloApplication'
+  mainClass = 'game.task.SnakeApplication'
 }
 
 javafx {

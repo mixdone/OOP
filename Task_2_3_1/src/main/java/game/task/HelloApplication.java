@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * Main class.
  */
-public class HelloApplication extends Application {
+public class SnakeApplication extends Application {
 
     /**
      * Start.
