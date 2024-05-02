@@ -5,7 +5,7 @@ import game.task.game.Cell;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestCell {
+public class CellTest {
     @Test
     public void testX() {
         Cell cell = new Cell(1, 2, CellType.FOOD);
