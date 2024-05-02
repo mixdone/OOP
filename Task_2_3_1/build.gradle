@@ -29,6 +29,13 @@ tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
 }
 
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+  }
+}
+
+
 application {
   mainModule = 'game.task'
   mainClass = 'game.task.HelloApplication'
