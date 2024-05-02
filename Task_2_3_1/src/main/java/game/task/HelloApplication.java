@@ -1,6 +1,8 @@
 package game.task;
 
 import java.io.IOException;
+
+import game.task.gm.Snake;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,7 +24,7 @@ public class SnakeApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("start.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SnakeApplication.class.getResource("start.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Snake Game");
         stage.setScene(scene);
