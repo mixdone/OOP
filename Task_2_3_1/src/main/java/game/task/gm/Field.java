@@ -8,8 +8,8 @@ import java.util.Random;
  * Class field.
  */
 public class Field {
-    private final int xSize;
-    private final int ySize;
+    private final int sizeX;
+    private final int sizeY;
 
     private final Settings settings;
     private final CellType[][] matrix;
@@ -20,15 +20,15 @@ public class Field {
     /**
      * Class constructor.
      *
-     * @param xSize columns number.
-     * @param ySize rows number.
+     * @param sizeX columns number.
+     * @param sizeY rows number.
      * @param settings settings.
      */
-    public Field(int xSize, int ySize, Settings settings) {
-        this.xSize = xSize;
-        this.ySize = ySize;
+    public Field(int sizeX, int sizeY, Settings settings) {
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
         this.settings = settings;
-        this.matrix = new CellType[xSize][ySize];
+        this.matrix = new CellType[sizeX][sizeY];
         fillInField();
     }
 
@@ -36,8 +36,8 @@ public class Field {
      * Fill in field. Grass and food.
      */
     private void fillInField() {
-        for (int i = 0; i < xSize; i++) {
-            for (int j = 0; j < ySize; j++) {
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++) {
                 this.matrix[i][j] = CellType.GRASS;
             }
         }
@@ -47,7 +47,7 @@ public class Field {
             var x = Math.abs(random.nextInt()) % 50;
             var y = Math.abs(random.nextInt()) % 50;
 
-            while(getCell(x, y) != CellType.GRASS) {
+            while (getCell(x, y) != CellType.GRASS) {
                 x = Math.abs(random.nextInt()) % 50;
                 y = Math.abs(random.nextInt()) % 50;
             }
@@ -62,7 +62,7 @@ public class Field {
      * @return x size.
      */
     public int getxSize() {
-        return xSize;
+        return sizeX;
     }
 
     /**
@@ -71,7 +71,7 @@ public class Field {
      * @return y size.
      */
     public int getySize() {
-        return ySize;
+        return sizeY;
     }
 
     /**
