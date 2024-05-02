@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * Main class.
  */
-public class Main extends Application {
+public class HelloApplication extends Application {
 
     /**
      * Start.
@@ -22,7 +22,7 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("start.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("start.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Snake Game");
         stage.setScene(scene);
