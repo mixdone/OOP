@@ -23,9 +23,9 @@ import javafx.stage.Stage;
 public class Game implements Runnable {
 
     private final Stage stage;
-    private final Field field;
+    private Field field;
     private final Settings settings;
-    private final Snake snake;
+    private Snake snake;
     private final Drawer drawer;
     private Thread game;
     private Thread food;
@@ -35,7 +35,7 @@ public class Game implements Runnable {
     private final AtomicInteger eat      = new AtomicInteger(0);
 
     private boolean win = false;
-    private final long speedUpdate = 250;
+    private long speedUpdate = 250;
 
     /**
      * Keyboard action handler.
@@ -68,10 +68,7 @@ public class Game implements Runnable {
                 }
             }
         }
-
-
     }
-
 
     /**
      * Class constructor.
@@ -92,6 +89,7 @@ public class Game implements Runnable {
         scene.setOnKeyPressed(new KeyStoneHandler());
         stage.setOnCloseRequest(t -> System.exit(0));
         stage.setScene(scene);
+        eat.set(settings.getAmountOfFood());
 
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
         this.drawer = new Drawer(graphicsContext, field, settings);
@@ -113,22 +111,36 @@ public class Game implements Runnable {
         game = new Thread(() -> {
             var time = System.currentTimeMillis();
             var diff = snake.getLenght() * 10;
-            while (!gameOver.get() && !Thread.currentThread().isInterrupted()) {
-                var currentTime = System.currentTimeMillis();
-                if (currentTime - time > speedUpdate - diff) {
-                    update();
-                    time = currentTime;
-                    diff = snake.getLenght() * 10;
+            while (true) {
+                while (!gameOver.get() && !Thread.currentThread().isInterrupted()) {
+                    var currentTime = System.currentTimeMillis();
+                    if (currentTime - time > speedUpdate - diff) {
+                        update();
+                        time = currentTime;
+                        diff = snake.getLenght() * 10;
+                    }
                 }
+                drawer.drawGameOver(win);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+                gameOver.set(false);
+                field = new Field(settings.getRows(), settings.getRows(), settings);
+                snake = new Snake(field);
+                drawer.drawField();
+                eat.set(settings.getAmountOfFood());
+                speedUpdate = 250;
             }
-            drawer.drawGameOver(win);
         });
 
         /*
          * Food generator.
          */
         food = new Thread(() -> {
-            while (!gameOver.get() && !Thread.currentThread().isInterrupted()) {
+            while (!Thread.currentThread().isInterrupted()) {
                 if (eat.get() > 0) {
 
                     var x = Math.abs(random.nextInt()) % 50;
@@ -142,12 +154,8 @@ public class Game implements Runnable {
                     var f = new Cell(x, y, CellType.FOOD);
 
                     field.setCell(f);
-                    try {
-                        drawer.drawFood(f);
-                    } catch (InternalError e) {
-                        drawer.drawField();
-                        continue;
-                    }
+
+                    drawer.drawFood(f);
                     eat.set(eat.get() - 1);
                 }
             }
@@ -176,14 +184,9 @@ public class Game implements Runnable {
         if (snake.getLenght() > length) {
             eat.set(eat.get() + 1);
         }
-        try {
-            drawer.drawGrass(snake.getChangedCell());
-            drawer.drawSnake(snake.getHead());
-        } catch (InternalError e) {
-            drawer.drawField();
-            drawer.drawGrass(snake.getChangedCell());
-            drawer.drawSnake(snake.getHead());
-        }
+
+        drawer.drawGrass(snake.getChangedCell());
+        drawer.drawSnake(snake.getHead());
     }
 
 }

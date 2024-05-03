@@ -41,19 +41,6 @@ public class Field {
                 this.matrix[i][j] = CellType.GRASS;
             }
         }
-
-        for (int i = 0; i < settings.getAmountOfFood(); i++) {
-
-            var x = Math.abs(random.nextInt()) % 50;
-            var y = Math.abs(random.nextInt()) % 50;
-
-            while (getCell(x, y) != CellType.GRASS) {
-                x = Math.abs(random.nextInt()) % 50;
-                y = Math.abs(random.nextInt()) % 50;
-            }
-
-            matrix[x][y] = CellType.FOOD;
-        }
     }
 
     /**

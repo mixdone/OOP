@@ -36,10 +36,6 @@ public class Drawer {
         for (int i = 0; i < field.getxSize(); i++) {
             for (int j = 0; j < field.getySize(); j++) {
                 drawGrass(new Cell(i, j, CellType.GRASS));
-
-                if (field.getCell(i, j) == CellType.FOOD) {
-                    drawFood(new Cell(i, j, CellType.FOOD));
-                }
             }
         }
     }
