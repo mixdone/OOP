@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="867.0" style="-fx-background-color: green;"
+            xmlns:fx="http://javafx.com/javafx/1" fx:controller="game.task.Controller">
+  <Button layoutX="472.0" layoutY="151.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="107.0" text="Play"
+          fx:id="play" onAction="#onPlay"/>
+  <Button layoutX="472.0" layoutY="246.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="107.0" text="Settings"
+          fx:id="settings" onAction="#onSettings"/>
+  <Circle fill="RED" layoutX="165.0" layoutY="287.0" radius="9.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="173.0" layoutY="275.0" radius="12.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="180.0" layoutY="260.0" radius="15.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="181.0" layoutY="241.0" radius="16.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="173.0" layoutY="225.0" radius="18.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="155.0" layoutY="214.0" radius="20.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="135.0" layoutY="214.0" radius="22.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="113.0" layoutY="223.0" radius="24.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="98.0" layoutY="241.0" radius="26.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Circle fill="#b5b9b3" layoutX="94.0" layoutY="275.0" radius="28.0" stroke="BLACK" strokeType="INSIDE"/>
+  <Arc fill="#b5b9b3" layoutX="126.0" layoutY="295.0" length="300.0" radiusX="32.0" radiusY="32.0" startAngle="25.2"
+       stroke="BLACK" strokeType="INSIDE" type="ROUND" AnchorPane.leftAnchor="93.99917602539062"
+       AnchorPane.rightAnchor="485.0447082519531" AnchorPane.topAnchor="262.99774169921875"/>
+  <Circle fill="DODGERBLUE" layoutX="124.0" layoutY="278.0" radius="6.0" stroke="BLACK" strokeType="INSIDE"
+          AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="510.0"
+          AnchorPane.topAnchor="272.0"/>
+  <Text layoutX="33.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Snake Game"
+        wrappingWidth="386.81787109375" AnchorPane.bottomAnchor="415.5546875" AnchorPane.leftAnchor="33.0"
+        AnchorPane.rightAnchor="447.18212890625" AnchorPane.topAnchor="74.4453125">
+    <font>
+      <Font name="System Bold Italic" size="48.0"/>
+    </font>
+    <fill>
+      <LinearGradient>
+        <stops>
+          <Stop>
+            <color>
+              <Color red="0.9399999976158142" green="0.009399999864399433" blue="0.009399999864399433"/>
+            </color>
+          </Stop>
+          <Stop offset="1.0">
+            <color>
+              <Color red="1.0" green="1.0" blue="1.0"/>
+            </color>
+          </Stop>
+        </stops>
+      </LinearGradient>
+    </fill>
+  </Text>
+</AnchorPane>
