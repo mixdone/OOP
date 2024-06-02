@@ -2,14 +2,14 @@ package task;
 
 import com.github.stefanbirkner.systemlambda.SystemLambda;
 import com.puppycrawl.tools.checkstyle.Main;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import lombok.Getter;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;

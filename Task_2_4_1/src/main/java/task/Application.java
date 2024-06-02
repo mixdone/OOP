@@ -1,15 +1,23 @@
 package task;
 
-import task.groovy.*;
-import lombok.SneakyThrows;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Objects;
+import task.groovy.*;
+import lombok.SneakyThrows;
 
+/**
+ * Application class.
+ */
 public class Application {
 
+    /**
+     * Main.
+     *
+     * @param args args.
+     * @throws URISyntaxException exception.
+     */
     @SneakyThrows
     public static void main(String[] args) throws URISyntaxException {
         var results = new HashMap<Student, HashMap<Task, TaskResult>>();
@@ -33,7 +41,8 @@ public class Application {
                     var taskResult = new TaskResult();
                     var auditor = new TaskChecker(taskResult);
                     auditor.taskCheck(path, task);
-                    if (auditor.getResult().getBuild() && auditor.getResult().getFailedTests() == 0) {
+                    if (auditor.getResult().getBuild() &&
+                            auditor.getResult().getFailedTests() == 0) {
                         auditor.checkDeadlines(path + "/OOP", task);
                     }
                     System.out.println(auditor.getResult());

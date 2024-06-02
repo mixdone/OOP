@@ -2,17 +2,15 @@ package task.groovy;
 
 import groovy.lang.*;
 import groovy.util.DelegatingScript;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.codehaus.groovy.control.CompilerConfiguration;
-import task.Application;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.ParameterizedType;
 import java.net.URI;
-import java.nio.file.Paths;
 import java.util.Collection;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.SneakyThrows;
+import org.codehaus.groovy.control.CompilerConfiguration;
+import task.Application;
 
 @EqualsAndHashCode(callSuper=false)
 @Data
