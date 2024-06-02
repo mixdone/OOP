@@ -1,10 +1,12 @@
 package task.groovy;
 
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
+/**
+ * Class student groovy.
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Student extends Groovy {

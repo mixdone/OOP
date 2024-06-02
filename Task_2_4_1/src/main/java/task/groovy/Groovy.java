@@ -12,29 +12,13 @@ import lombok.SneakyThrows;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import task.Application;
 
+/**
+ * Groovy class.
+ */
 @EqualsAndHashCode(callSuper=false)
 @Data
 public class Groovy extends GroovyObjectSupport {
     private URI scriptPath;
-
-    @SneakyThrows
-    public void methodMissing(String name, Object args) {
-        MetaProperty metaProperty = getMetaClass().getMetaProperty(name);
-        if (metaProperty != null) {
-            Closure<?> closure = (Closure<?>) ((Object[]) args)[0];
-            Class<?> type = metaProperty.getType();
-            Constructor<?> constructor = type.getConstructor();
-            Object value = getProperty(name) == null
-                    ? constructor.newInstance() :
-                    getProperty(name);
-            closure.setDelegate(value);
-            closure.setResolveStrategy(Closure.DELEGATE_FIRST);
-            closure.call();
-            setProperty(name, value);
-        } else {
-            throw new IllegalArgumentException("No such field: " + name);
-        }
-    }
 
     @SneakyThrows
     public void runFrom(URI uri) {

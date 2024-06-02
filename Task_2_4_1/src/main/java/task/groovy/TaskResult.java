@@ -2,6 +2,9 @@ package task.groovy;
 
 import lombok.Data;
 
+/**
+ * Task result class.
+ */
 @Data
 public class TaskResult {
     Boolean build = false;
