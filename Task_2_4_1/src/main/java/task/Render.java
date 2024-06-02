@@ -1,13 +1,13 @@
 package task;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
 import lombok.SneakyThrows;
 import task.groovy.Student;
 import task.groovy.Task;
@@ -19,7 +19,8 @@ import task.groovy.TaskResult;
 public class Render {
 
     /**
-     * Render
+     * Render.
+     *
      * @param tasks list of task.
      * @param tasksResults results.
      */

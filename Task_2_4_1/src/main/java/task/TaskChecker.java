@@ -45,10 +45,10 @@ public class TaskChecker {
     public void taskCheck(String path, Task task) {
         var taskPath = path + "/OOP/" + task.getName();
         try {
-        checkBuild(taskPath);
-        checkStyle(path + "/OOP/", task.getName());
-        checkJavaDoc(taskPath);
-        checkTests(taskPath);
+            checkBuild(taskPath);
+            checkStyle(path + "/OOP/", task.getName());
+            checkJavaDoc(taskPath);
+            checkTests(taskPath);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -86,11 +86,13 @@ public class TaskChecker {
                     path + "/" + taskName + "/src/main/java");
         });
 
-        if (status != 0) result.setCheckstyle(false);
+        if (status != 0) {
+            result.setCheckstyle(false);
+        }
 
         BufferedReader reader = new BufferedReader(new FileReader(path + "result.txt"));
         int counter = 0;
-        while(reader.ready()) {
+        while (reader.ready()) {
             if (reader.readLine().contains("[WARN]")) {
                 counter++;
             }
@@ -143,9 +145,9 @@ public class TaskChecker {
                     break;
                 }
             }
-            var dbFactory = DocumentBuilderFactory.newInstance();
-            var dBuilder = dbFactory.newDocumentBuilder();
-            var doc = dBuilder.parse(new File(resultPath));
+            var documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            var documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            var doc = documentBuilder.parse(new File(resultPath));
 
             doc.getDocumentElement().normalize();
             NamedNodeMap attrList = doc.getElementsByTagName("testsuite").item(0).getAttributes();
@@ -157,8 +159,8 @@ public class TaskChecker {
             result.setFailedTests(failed);
             result.setPassedTests(passed);
 
-        } catch (IOException | NullPointerException |
-                 ParserConfigurationException | SAXException e) {
+        } catch (IOException | NullPointerException
+                 | ParserConfigurationException | SAXException e) {
             throw new RuntimeException(e);
         }
     }
