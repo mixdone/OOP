@@ -77,6 +77,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">TaskChecker</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Auditor.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -89,7 +90,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(task.groovy.TaskResult)" class="member-name-link">TaskChecker</a><wbr>(<a href="groovy/TaskResult.html" title="class in task.groovy">TaskResult</a>&nbsp;result)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -107,11 +110,15 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkDeadlines(java.lang.String,task.groovy.Task)" class="member-name-link">checkDeadlines</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;path,
  <a href="groovy/Task.html" title="class in task.groovy">Task</a>&nbsp;task)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Check deadlines, get mark.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#taskCheck(java.lang.String,task.groovy.Task)" class="member-name-link">taskCheck</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;path,
  <a href="groovy/Task.html" title="class in task.groovy">Task</a>&nbsp;task)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Run checks.</div>
+</div>
 </div>
 </div>
 </div>
@@ -133,6 +140,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(task.groovy.TaskResult)">
 <h3>TaskChecker</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">TaskChecker</span><wbr><span class="parameters">(<a href="groovy/TaskResult.html" title="class in task.groovy">TaskResult</a>&nbsp;result)</span></div>
+<div class="block">Constructor.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>result</code> - task result.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -148,6 +160,12 @@ loadScripts(document, 'script');</script>
 <h3>taskCheck</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">taskCheck</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;path,
  <a href="groovy/Task.html" title="class in task.groovy">Task</a>&nbsp;task)</span></div>
+<div class="block">Run checks.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>path</code> - path.</dd>
+<dd><code>task</code> - task.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -157,10 +175,14 @@ loadScripts(document, 'script');</script>
  <a href="groovy/Task.html" title="class in task.groovy">Task</a>&nbsp;task)</span>
                     throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a>,
 org.eclipse.jgit.api.errors.GitAPIException</span></div>
+<div class="block">Check deadlines, get mark.</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>path</code> - path.</dd>
+<dd><code>task</code> - task.</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code></dd>
-<dd><code>org.eclipse.jgit.api.errors.GitAPIException</code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - exception.</dd>
+<dd><code>org.eclipse.jgit.api.errors.GitAPIException</code> - exception.</dd>
 </dl>
 </section>
 </li>
