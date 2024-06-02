@@ -15,7 +15,7 @@ import task.Application;
 /**
  * Groovy class.
  */
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @Data
 public class Groovy extends GroovyObjectSupport {
     private URI scriptPath;

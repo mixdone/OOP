@@ -1,13 +1,20 @@
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Objects;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import task.groovy.Config;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Objects;
-
+/**
+ * Test.
+ */
 public class TestGroovy {
 
+    /**
+     * Test.
+     * 
+     * @throws URISyntaxException exception.
+     */
     @Test
     public void groupTest() throws URISyntaxException {
         var info = new Config();
@@ -21,6 +28,11 @@ public class TestGroovy {
         }
     }
 
+    /**
+     * Test.
+     *
+     * @throws URISyntaxException exception.
+     */
     @Test
     public void studentsTest() throws URISyntaxException {
         var info = new Config();
