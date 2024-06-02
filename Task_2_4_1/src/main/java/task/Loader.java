@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class Loader {
-    static public boolean clone(String url, String dest, String branch) throws IOException, InterruptedException {
-        File directory = new File(dest);
+    static public boolean clone(String url, String path, String branch) throws IOException, InterruptedException {
+        File directory = new File(path);
         if (!directory.exists()){
             if (!directory.mkdirs()) {
                 return false;

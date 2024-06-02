@@ -10,7 +10,6 @@ import java.time.LocalDate;
 public class Task extends Groovy {
     private String name;
     private String description;
-    private Integer cost;
     private LocalDate softDeadline;
     private LocalDate hardDeadline;
 }

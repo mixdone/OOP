@@ -26,8 +26,8 @@ public class Application {
                 String path = "Repositories/" + group.getNumber() + "/" + student.getUsername();
                 var status = Loader.clone(student.getRepository(), path, info.getSettings());
                 if (!status) {
-                    //System.out.println("something went wrong");
-                    //continue;
+                    System.out.println("something went wrong");
+                    continue;
                 }
                 for (var task : info.getTasks()) {
                     var taskResult = new TaskResult();

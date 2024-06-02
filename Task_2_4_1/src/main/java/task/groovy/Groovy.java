@@ -39,13 +39,6 @@ public class Groovy extends GroovyObjectSupport {
     }
 
     @SneakyThrows
-    public void include(String path) {
-        URI uri = Paths.get(scriptPath).getParent().resolve(path).toUri();
-        runFrom(uri);
-        postProcess();
-    }
-
-    @SneakyThrows
     public void runFrom(URI uri) {
         this.scriptPath = uri;
         CompilerConfiguration cc = new CompilerConfiguration();
