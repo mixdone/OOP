@@ -4,10 +4,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Objects;
-
+import lombok.SneakyThrows;
 import task.checker.TaskChecker;
 import task.groovy.*;
-import lombok.SneakyThrows;
 
 /**
  * Application class.

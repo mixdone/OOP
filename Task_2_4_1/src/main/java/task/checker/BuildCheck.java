@@ -6,7 +6,7 @@ import org.gradle.tooling.GradleConnector;
 /**
  * Auditor.
  */
-public class BuildCheck implements Auditor{
+public class BuildCheck implements Auditor {
     /**
      * Check.
      *
@@ -23,8 +23,6 @@ public class BuildCheck implements Auditor{
             return;
         }
 
-        var result = context.getResult();
-        result.setBuild(true);
-        context.setResult(result);
+        context.getResult().setBuild(true);
     }
 }

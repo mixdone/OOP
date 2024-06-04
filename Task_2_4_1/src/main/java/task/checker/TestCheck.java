@@ -1,10 +1,10 @@
 package task.checker;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import org.gradle.tooling.GradleConnector;
 import org.w3c.dom.NamedNodeMap;
 import org.xml.sax.SAXException;
@@ -56,7 +56,6 @@ public class TestCheck implements Auditor {
             result.setSkippedTests(skipped);
             result.setFailedTests(failed);
             result.setPassedTests(passed);
-            context.setResult(result);
 
         } catch (IOException | NullPointerException
                  | ParserConfigurationException | SAXException e) {

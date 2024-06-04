@@ -33,6 +33,7 @@ public class StyleCheck implements Auditor {
         var result = context.getResult();
         if (status != 0) {
             result.setCheckstyle(false);
+            return;
         }
 
         BufferedReader reader = null;
@@ -44,7 +45,9 @@ public class StyleCheck implements Auditor {
         int counter = 0;
         while (true) {
             try {
-                if (!reader.ready()) break;
+                if (!reader.ready()) {
+                    break;
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -62,6 +65,5 @@ public class StyleCheck implements Auditor {
             throw new RuntimeException(e);
         }
         result.setCheckstyle(counter <= 10);
-        context.setResult(result);
     }
 }

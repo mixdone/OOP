@@ -23,9 +23,6 @@ public class JavaDocCheck implements Auditor {
             System.out.println("Javadoc exception: " + e);
             return;
         }
-
-        var result = context.getResult();
-        result.setJavadoc(true);
-        context.setResult(result);
+        context.getResult().setJavadoc(true);
     }
 }

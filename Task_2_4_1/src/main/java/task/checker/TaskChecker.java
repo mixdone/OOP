@@ -34,16 +34,16 @@ public class TaskChecker {
         context.setResult(result);
         context.setPath(path + "/OOP/");
 
-        var auditors = new Auditor[] {new BuildCheck(), new StyleCheck(), new JavaDocCheck(), new TestCheck()};
+        var auditors = new Auditor[] {new BuildCheck(), new StyleCheck(),
+                new JavaDocCheck(), new TestCheck()};
 
         for (var auditor : auditors) {
             auditor.check(context);
         }
 
-        if (result.getBuild() &&
-                result.getFailedTests() == 0) {
-            var deadliner = new DeadLineCheck();
-            deadliner.check(context);
+        if (result.getBuild() && result.getFailedTests() == 0) {
+            var deadline = new DeadLineCheck();
+            deadline.check(context);
         }
     }
 

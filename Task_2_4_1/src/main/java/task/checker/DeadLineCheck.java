@@ -51,8 +51,5 @@ public class DeadLineCheck implements Auditor {
         } else {
             result.setMark(0.0);
         }
-
-        context.setResult(result);
-
     }
 }

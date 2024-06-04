@@ -20,7 +20,7 @@ public class Loader {
      * @throws IOException exception.
      * @throws InterruptedException exception.
      */
-    static public boolean clone(String url, String path, String branch)
+    public static boolean clone(String url, String path, String branch)
             throws IOException, InterruptedException {
         File directory = new File(path);
         if (!directory.exists()) {
