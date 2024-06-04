@@ -1,15 +1,17 @@
 package task.checker;
 
-import org.gradle.tooling.GradleConnector;
-import org.w3c.dom.NamedNodeMap;
-import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
+import org.gradle.tooling.GradleConnector;
+import org.w3c.dom.NamedNodeMap;
+import org.xml.sax.SAXException;
 
+/**
+ * Auditor.
+ */
 public class TestCheck implements Auditor {
 
     /**

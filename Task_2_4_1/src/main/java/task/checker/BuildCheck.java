@@ -1,9 +1,11 @@
 package task.checker;
 
+import java.io.File;
 import org.gradle.tooling.GradleConnector;
 
-import java.io.File;
-
+/**
+ * Auditor.
+ */
 public class BuildCheck implements Auditor{
     /**
      * Check.

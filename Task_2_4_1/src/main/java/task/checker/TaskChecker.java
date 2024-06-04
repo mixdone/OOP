@@ -1,12 +1,11 @@
 package task.checker;
 
 import lombok.Getter;
-import org.checkerframework.checker.units.qual.A;
 import task.groovy.Task;
 import task.groovy.TaskResult;
 
 /**
- * Auditor.
+ * Task checker.
  */
 @Getter
 public class TaskChecker {

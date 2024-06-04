@@ -1,5 +1,8 @@
 package task.checker;
 
+/**
+ * Auditor.
+ */
 public interface Auditor {
     /**
      * Check.

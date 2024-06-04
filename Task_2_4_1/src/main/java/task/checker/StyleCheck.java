@@ -2,12 +2,14 @@ package task.checker;
 
 import com.github.stefanbirkner.systemlambda.SystemLambda;
 import com.puppycrawl.tools.checkstyle.Main;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Auditor.
+ */
 public class StyleCheck implements Auditor {
 
     /**
