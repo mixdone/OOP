@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"task"},{"l":"task.groovy"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"task"},{"l":"task.checker"},{"l":"task.groovy"}];updateSearchResults();
