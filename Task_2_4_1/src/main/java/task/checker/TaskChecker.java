@@ -1,6 +1,7 @@
 package task.checker;
 
 import lombok.Getter;
+import org.checkerframework.checker.units.qual.A;
 import task.groovy.Task;
 import task.groovy.TaskResult;
 
@@ -28,26 +29,17 @@ public class TaskChecker {
      * @param task task.
      */
     public void taskCheck(String path, Task task) {
-        var taskPath = path + "/OOP/" + task.getName();
 
         var context = new Context();
         context.setTask(task);
         context.setResult(result);
-        context.setPath(taskPath);
-
-        var builder = new BuildCheck();
-        builder.check(context);
-
-        var javadoc = new JavaDocCheck();
-        javadoc.check(context);
-
-        var tester = new TestCheck();
-        tester.check(context);
-
         context.setPath(path + "/OOP/");
 
-        var styler = new StyleCheck();
-        styler.check(context);
+        var auditors = new Auditor[] {new BuildCheck(), new StyleCheck(), new JavaDocCheck(), new TestCheck()};
+
+        for (var auditor : auditors) {
+            auditor.check(context);
+        }
 
         if (result.getBuild() &&
                 result.getFailedTests() == 0) {

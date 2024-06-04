@@ -13,7 +13,7 @@ public class BuildCheck implements Auditor{
     @Override
     public void check(Context context) {
         GradleConnector connector = GradleConnector.newConnector();
-        connector.forProjectDirectory(new File(context.getPath()));
+        connector.forProjectDirectory(new File(context.getPath() + context.getTask().getName()));
         try (var connection = connector.connect()) {
             connection.newBuild().forTasks("build").run();
         } catch (RuntimeException e) {

@@ -19,8 +19,9 @@ public class TestCheck implements Auditor {
      */
     @Override
     public void check(Context context) {
+        var  path = context.getPath() + context.getTask().getName();
         GradleConnector connector = GradleConnector.newConnector();
-        connector.forProjectDirectory(new File(context.getPath()));
+        connector.forProjectDirectory(new File(path));
         try (var connection = connector.connect()) {
             connection.newBuild().forTasks("test").run();
         } catch (RuntimeException e) {
@@ -29,12 +30,12 @@ public class TestCheck implements Auditor {
         }
 
         try {
-            File testDir = new File(context.getPath() + "/build/test-results/test/");
+            File testDir = new File(path + "/build/test-results/test/");
             String resultPath = "";
             for (var file : Objects.requireNonNull(testDir.listFiles())) {
                 var filename = file.getName();
                 if (filename.endsWith(".xml")) {
-                    resultPath = context.getPath() + "/build/test-results/test/" + filename;
+                    resultPath = path + "/build/test-results/test/" + filename;
                     break;
                 }
             }
