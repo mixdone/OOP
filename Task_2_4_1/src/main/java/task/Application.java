@@ -4,6 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Objects;
+
+import task.checker.TaskChecker;
 import task.groovy.*;
 import lombok.SneakyThrows;
 
@@ -41,10 +43,6 @@ public class Application {
                     var taskResult = new TaskResult();
                     var auditor = new TaskChecker(taskResult);
                     auditor.taskCheck(path, task);
-                    if (auditor.getResult().getBuild() &&
-                            auditor.getResult().getFailedTests() == 0) {
-                        auditor.checkDeadlines(path + "/OOP", task);
-                    }
                     System.out.println(auditor.getResult());
                     results.get(student).put(task, auditor.getResult());
                 }
