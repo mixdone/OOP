@@ -1,0 +1,52 @@
+package task;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Objects;
+import lombok.SneakyThrows;
+import task.checker.TaskChecker;
+import task.groovy.*;
+
+/**
+ * Application class.
+ */
+public class Application {
+
+    /**
+     * Main.
+     *
+     * @param args args.
+     * @throws URISyntaxException exception.
+     */
+    @SneakyThrows
+    public static void main(String[] args) throws URISyntaxException {
+        var results = new HashMap<Student, HashMap<Task, TaskResult>>();
+        var info = new Config();
+        URI configPath = Objects.requireNonNull(Application.class.getClassLoader()
+                .getResource("config.groovy")).toURI();
+        info.runFrom(configPath);
+        info.postProcess();
+
+        for (var group : info.getGroups()) {
+            System.out.println(group.getNumber());
+            for (var student : group.getStudents()) {
+                results.put(student, new HashMap<>());
+                String path = "Repositories/" + group.getNumber() + "/" + student.getUsername();
+                var status = Loader.clone(student.getRepository(), path, info.getSettings());
+                if (!status) {
+                    System.out.println("something went wrong");
+                    continue;
+                }
+                for (var task : info.getTasks()) {
+                    var taskResult = new TaskResult();
+                    var auditor = new TaskChecker(taskResult);
+                    auditor.taskCheck(path, task);
+                    System.out.println(auditor.getResult());
+                    results.get(student).put(task, auditor.getResult());
+                }
+            }
+        }
+        Render.render(info.getTasks(), results);
+    }
+}
